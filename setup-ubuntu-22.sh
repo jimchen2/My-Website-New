@@ -28,12 +28,7 @@ sudo -u builduser bash -c 'cd /var/www/My-Website; mongorestore --dir=./dump; mo
 sudo systemctl stop nginx 
 sudo systemctl stop ufw
 sudo certbot certonly --standalone -d jimchen.me -d www.jimchen.me --email jimchen4214@gmail.com --non-interactive --agree-tos 
-sudo systemctl start nginx
-
-
-npm i 
-npm run dev
-
+sudo systemctl start ufw
 
 
 sudo -u builduser bash -c 'cd /var/www/My-Website/next; npm install;'
