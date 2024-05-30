@@ -5,7 +5,7 @@
 /next/.pnp
 /next.pnp.js
 /next.yarn/install-state.gz
-
+/dump/markdown_documents/
 # testing
 /next/coverage
 

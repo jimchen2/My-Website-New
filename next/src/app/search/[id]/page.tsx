@@ -32,7 +32,8 @@ const BlogPreview = () => {
     <div className="container mx-auto px-4 py-8">
       <br />
       <br />
-      <ul className="space-y-4">
+      <br />
+      <ul className="space-y-4 overflow-hidden">
         {blogPreviews.map((blog) => (
           <PreviewCard key={blog._id} blog={blog} highlightPattern={id} />
         ))}

@@ -42,23 +42,34 @@ const buildTree = (headings: TOCProps["headings"]): TreeNode[] => {
 const TableOfContents: React.FC<TOCProps> = ({ headings }) => {
   const tree = buildTree(headings);
 
-  const handleLinkClick = (event: React.MouseEvent<HTMLAnchorElement, MouseEvent>, id: string) => {
+  const handleLinkClick = (
+    event: React.MouseEvent<HTMLAnchorElement, MouseEvent>,
+    id: string
+  ) => {
     event.preventDefault(); // Prevent default anchor behavior
     const element = document.getElementById(id);
     if (element) {
-      element.scrollIntoView();
-      setTimeout(() => {
-        window.scrollBy(0, -70); // Scroll down by 70 pixels
-      }, 100); // Adjust the delay as needed
+      const offset = 110; // Adjust this value to the offset you need
+      const elementPosition = element.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.scrollY - offset;
+  
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: "smooth"
+      });
     }
   };
-
+  
   const renderTree = (nodes: TreeNode[], depth = 0) => {
     return (
       <ul className={`pl-${depth * 4}`}>
         {nodes.map((node, index) => (
           <li key={index} className="mb-2">
-            <a href={`#${node.id}`} onClick={(event) => handleLinkClick(event, node.id)} className="text-blue-600 hover:text-blue-800">
+            <a
+              href={`#${node.id}`}
+              onClick={(event) => handleLinkClick(event, node.id)}
+              className="text-gray-700 hover:text-blue-600 shadow-md"
+            >
               {node.text}
             </a>
             {node.children.length > 0 && renderTree(node.children, depth + 1)}
