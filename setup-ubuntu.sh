@@ -1,5 +1,5 @@
 sudo apt update && sudo apt upgrade -y
-sudo apt install git build-essential npm nginx certbot gnupg curl -y
+sudo apt install git build-essential npm nginx certbot gnupg curl screen -y
 
 curl -fsSL https://deb.nodesource.com/setup_22.x | sudo bash - 
 sudo apt install nodejs -y 
@@ -19,28 +19,35 @@ sudo apt-get install -y mongodb-org
 sudo systemctl enable --now mongod
 
 
-
-
-
 ##################################################################
 
-sudo mkdir -p /var/www; sudo git clone https://github.com/jimchen2/My-Website /var/www/My-Website; sudo chown -R builduser:builduser /var/www/My-Website
+sudo mkdir -p /var/www; sudo git clone https://github.com/jimchen2/My-Website-New /var/www/My-Website; sudo chown -R builduser:builduser /var/www/My-Website
 sudo -u builduser bash -c 'cd /var/www/My-Website; mongorestore --dir=./dump; mongoimport --db test --file ./dump/test/blogs.json'
 
-sudo -u builduser bash -c 'cd /var/www/My-Website/backend; npm install'
-sudo cp /var/www/My-Website/my-website-backend.service /etc/systemd/system/my-website-backend.service
-sudo systemctl daemon-reload && sudo systemctl enable --now my-website-backend
-# Install frontend dependencies and build
-sudo -u builduser bash -c 'cd /var/www/My-Website/frontend; npm install; npm run build'
 
 sudo systemctl stop nginx 
 sudo systemctl stop ufw
 sudo certbot certonly --standalone -d jimchen.me -d www.jimchen.me --email jimchen4214@gmail.com --non-interactive --agree-tos 
+sudo systemctl start nginx
+
+
+npm i 
+npm run dev
+
+
+
+sudo -u builduser bash -c 'cd /var/www/My-Website/next; npm install;'
+
+
+################## DEVELOPEMENT #############################################
+
+# screen 
+# npm run dev
+# exit screen
+
 
 mkdir -p /etc/nginx/{sites-available,sites-enabled} && sudo ln -sf /etc/nginx/sites-available/mywebsite.conf /etc/nginx/sites-enabled/
 sudo cp /var/www/My-Website/mywebsite.conf /etc/nginx/sites-available/mywebsite.conf
 sudo cp /var/www/My-Website/nginx.conf /etc/nginx/nginx.conf
 sudo systemctl enable --now nginx
 
-sudo cp /var/www/My-Website/update-mywebsite.{service,timer} /etc/systemd/system/
-sudo systemctl daemon-reload && sudo systemctl enable --now update-mywebsite.timer

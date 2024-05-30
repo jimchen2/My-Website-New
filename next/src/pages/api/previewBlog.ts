@@ -2,6 +2,16 @@ import type { NextApiRequest, NextApiResponse } from "next";
 import dbConnect from "../../db/dbConnect";
 import Blog from "../models/blog.model";
 
+interface BlogEntry {
+  title: string;
+  date: Date;
+  uuid: string;
+}
+
+type BlogsByType = {
+  [key: string]: BlogEntry[];
+};
+
 export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
@@ -14,14 +24,14 @@ export default async function handler(
       const blogs = await Blog.find({});
 
       // Group blogs by type
-      const blogsByType = blogs.reduce((acc, blog) => {
+      const blogsByType: BlogsByType = blogs.reduce((acc: BlogsByType, blog) => {
         if (!acc[blog.type]) {
           acc[blog.type] = [];
         }
         acc[blog.type].push({
           title: blog.title,
           date: new Date(blog.date), // Convert date string to Date object
-          uuid: blog.date, // Convert date string to Date object
+          uuid: blog.date, // Assuming uuid is intended to be blog.date; adjust if necessary
         });
         return acc;
       }, {});
@@ -39,9 +49,7 @@ export default async function handler(
 
       res.status(200).json(sortedTypes);
     } catch (err) {
-      res
-        .status(500)
-        .json({ message: "Error fetching blog previews", error: err });
+      res.status(500).json({ message: "Error fetching blog previews", error: err });
     }
   } else {
     res.setHeader("Allow", ["GET"]);

@@ -10,12 +10,18 @@ interface BlogContentProps {
   body: string;
 }
 
-function extractHeadings(html) {
+interface Heading {
+  id: string;
+  text: string; // Ensure text is always a string
+  tagName: string;
+}
+
+function extractHeadings(html: string): Heading[] {
   const tmp = document.createElement("div");
   tmp.innerHTML = html;
   const headings = Array.from(tmp.querySelectorAll("h2")).map((heading) => ({
     id: heading.id,
-    text: heading.textContent,
+    text: heading.textContent || "",  // Ensure text is always a string
     tagName: heading.tagName,
   }));
   console.log(headings);
@@ -28,7 +34,7 @@ const BlogContent: React.FC<BlogContentProps> = ({
   date,
   body,
 }) => {
-  const [headings, setHeadings] = useState([]);
+  const [headings, setHeadings] = useState<Heading[]>([]);
   const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
@@ -66,8 +72,8 @@ const BlogContent: React.FC<BlogContentProps> = ({
         <div className="blog-content-container">
           <div className="flex flex-col">
             <div className="overflow-y-auto">
-            <br />
-        <br />
+              <br />
+              <br />
 
               <TableOfContents headings={headings} />
             </div>
