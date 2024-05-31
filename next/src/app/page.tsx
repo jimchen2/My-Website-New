@@ -17,13 +17,16 @@ interface BlogType {
   type: string;
   blogs: BlogPreview[];
 }
-
+// Improved type definition for props (no need to export this interface)
 interface BlogPreviewProps {
-  newlines?: number;
-  fontSize?: string;
+  newlines?: number; // Made optional with default value
+  fontSize?: string; // Made optional with default value
 }
 
-const BlogPreview: React.FC<BlogPreviewProps> = ({ newlines = 4, fontSize = 'text-2xl' }) => {
+const BlogPreview: React.FC<BlogPreviewProps> = ({
+  newlines = 4,
+  fontSize = "text-2xl",
+}) => {
   const [blogPreviews, setBlogPreviews] = useState<BlogType[]>([]);
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
   const router = useRouter();
@@ -31,6 +34,7 @@ const BlogPreview: React.FC<BlogPreviewProps> = ({ newlines = 4, fontSize = 'tex
   useEffect(() => {
     const fetchBlogPreviews = async () => {
       const res = await fetch("/api/previewBlog");
+      if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
       const data: BlogType[] = await res.json();
       setBlogPreviews(data);
     };
@@ -50,7 +54,9 @@ const BlogPreview: React.FC<BlogPreviewProps> = ({ newlines = 4, fontSize = 'tex
     <div className="flex flex-col md:flex-row gap-4 p-4">
       <div className="w-full sticky top-0">
         {renderNewlines()}
-        <header className={`${fontSize} font-bold p-4 text-center`}>My Blogs</header>
+        <header className={`${fontSize} font-bold p-4 text-center`}>
+          My Blogs
+        </header>
 
         <ul className="space-y-4 overflow-x-hidden">
           {blogPreviews.map((blogType) => (
