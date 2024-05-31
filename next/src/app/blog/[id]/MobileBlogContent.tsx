@@ -58,11 +58,11 @@ const BlogContent: React.FC<BlogContentProps> = ({
       <br />
       <br />
 
-      <div className="blog-content-container">
+      <div className="blog-content-container overflow-hidden">
         <div className="flex flex-col lg:flex-row">
           <br />
           <br />
-          <div className="lg:w-1/4 lg:pl-8 lg:sticky lg:top-20 overflow-y-auto">
+          <div className="lg:w-1/4 lg:pl-8 lg:sticky lg:top-20">
             <TableOfContents headings={headings} />
           </div>
 
@@ -77,7 +77,7 @@ const BlogContent: React.FC<BlogContentProps> = ({
               <MathJax>
                 <div className="scoped-styles">
                   <div
-                    className="break-words overflow-auto"
+                    className="break-words"
                     dangerouslySetInnerHTML={{ __html: body }}
                   />
                 </div>

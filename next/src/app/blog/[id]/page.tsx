@@ -27,7 +27,9 @@ const BlogManager: React.FC = () => {
     <div className="flex min-h-screen">
       {mobile ? (
         <div>
-          <BlogFetch mobile={mobile} />
+          <div>
+            <BlogFetch mobile={mobile} />
+          </div>
           <BlogPreview />
         </div>
       ) : (
