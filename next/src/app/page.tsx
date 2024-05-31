@@ -43,6 +43,7 @@ const BlogPreview: React.FC = () => {
         <br />
         <br />
         <br />
+        <br />
         <header className="text-2xl font-bold p-4 text-center">My Blogs</header>
 
         <ul className="space-y-4 overflow-x-hidden">
