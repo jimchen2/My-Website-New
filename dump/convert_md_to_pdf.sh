@@ -18,7 +18,9 @@ convert_to_pdf() {
   local title=$(grep -m 1 '^title: ' "$file" | sed 's/^title: "\(.*\)"$/\1/')
   local pdf_file="${folder}/${title}.pdf"
 
-  pandoc "$file" --resource-path="$folder" --pdf-engine=xelatex -o "$pdf_file"
+  pandoc "$file" --resource-path="$folder" --pdf-engine=xelatex \
+    -V mainfont="Noto Serif" -V monofont="Noto Sans Mono" -V sansfont="Noto Sans" \
+    -o "$pdf_file"
 }
 
 # Main process
