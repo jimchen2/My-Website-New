@@ -30,12 +30,12 @@ const BlogManager: React.FC = () => {
           <div>
             <BlogFetch mobile={mobile} />
           </div>
-          <BlogPreview />
+          <BlogPreview newlines={0} />
         </div>
       ) : (
         <div className="flex">
-          <div className="w-[300px] sticky top-0 h-screen">
-            <BlogPreview />
+          <div className="w-[300px] sticky top-0 h-screen overflow-y-auto">
+            <BlogPreview newlines={2} fontSize="text-lg" />
           </div>
           <div>
             <BlogFetch mobile={mobile} />

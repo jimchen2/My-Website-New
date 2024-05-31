@@ -18,7 +18,12 @@ interface BlogType {
   blogs: BlogPreview[];
 }
 
-const BlogPreview: React.FC = () => {
+interface BlogPreviewProps {
+  newlines?: number;
+  fontSize?: string;
+}
+
+const BlogPreview: React.FC<BlogPreviewProps> = ({ newlines = 4, fontSize = 'text-2xl' }) => {
   const [blogPreviews, setBlogPreviews] = useState<BlogType[]>([]);
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
   const router = useRouter();
@@ -37,19 +42,20 @@ const BlogPreview: React.FC = () => {
     setOpenDropdown(openDropdown === type ? null : type);
   };
 
+  const renderNewlines = () => {
+    return Array.from({ length: newlines }).map((_, idx) => <br key={idx} />);
+  };
+
   return (
     <div className="flex flex-col md:flex-row gap-4 p-4">
-      <div className="w-full h-screen overflow-y-auto sticky top-0">
-        <br />
-        <br />
-        <br />
-        <br />
-        <header className="text-2xl font-bold p-4 text-center">My Blogs</header>
+      <div className="w-full sticky top-0">
+        {renderNewlines()}
+        <header className={`${fontSize} font-bold p-4 text-center`}>My Blogs</header>
 
         <ul className="space-y-4 overflow-x-hidden">
           {blogPreviews.map((blogType) => (
             <li key={blogType.type}>
-              <div className=" rounded-lg shadow-lg p-4 transition duration-300 ease-in-out transform hover:scale-105">
+              <div className="rounded-lg shadow-lg p-4 transition duration-300 ease-in-out transform hover:scale-105">
                 <div
                   className="flex justify-between items-center cursor-pointer"
                   onClick={() => toggleDropdown(blogType.type)}
@@ -68,7 +74,7 @@ const BlogPreview: React.FC = () => {
                     {blogType.blogs.map((blog) => (
                       <li
                         key={blog._id}
-                        className="p-4 rounded-lg  transition duration-300 ease-in-out transform hover:scale-105"
+                        className="p-4 rounded-lg transition duration-300 ease-in-out transform hover:scale-105"
                       >
                         <div className="flex justify-center">
                           <h6 className="font-semibold text-gray-600">
@@ -87,9 +93,7 @@ const BlogPreview: React.FC = () => {
               </div>
             </li>
           ))}
-          <br />
-          <br />
-          <br />
+          {renderNewlines()}
         </ul>
       </div>
     </div>

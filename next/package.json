@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@headlessui/react": "^2.0.4",
     "@heroicons/react": "^1.0.6",
     "@mdx-js/loader": "^3.0.1",
     "@mdx-js/react": "^3.0.1",

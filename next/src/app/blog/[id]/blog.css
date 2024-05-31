@@ -209,3 +209,48 @@
   overflow-y: hidden;
   max-width: 90vw; /* Adjust the value as needed */
 }
+
+.scoped-styles table {
+  max-width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 1.5em;
+  overflow-x: auto; /* Enable horizontal scrolling */
+  display: block; /* Ensure the table is a block element for overflow */
+}
+
+.scoped-styles th,
+.scoped-styles td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+  overflow-wrap: break-word; /* Ensure long words break */
+  word-break: break-word; /* Ensure long words break */
+}
+
+.scoped-styles th {
+  background-color: #f2f2f2;
+  font-weight: bold;
+}
+
+.scoped-styles tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.scoped-styles tr:hover {
+  background-color: #f1f1f1;
+}
+
+.scoped-styles table caption {
+  caption-side: bottom;
+  padding: 5px;
+  font-style: italic;
+  font-size: 14px;
+  color: #666;
+}
+
+.scoped-styles thead {
+  position: sticky;
+  top: 0;
+  background-color: #fff;
+  z-index: 1;
+}
