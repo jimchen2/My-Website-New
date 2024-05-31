@@ -11,7 +11,7 @@ const footerSections = [
   {
     title: "Social",
     links: [
-      { href: "https://anonytube.jimchen.me/profile/jimchen", text: "AnonyTube", external: true }
+      { href: "https://mastodon.social/@jimchen4214", text: "Mastodon", external: true }
     ]
   },
   {
