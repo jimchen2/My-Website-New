@@ -1,6 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 import dbConnect from "../../db/dbConnect";
-import Blog from "../models/blog.model";
+import Blog from "../../app/models/blog.model";
 
 interface BlogEntry {
   title: string;

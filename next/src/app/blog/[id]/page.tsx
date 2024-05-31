@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import BlogPost from "./BlogFetch"; // Ensure this is the correct import path
+import BlogFetch from "./BlogFetch"; // Ensure this is the correct import path
 import BlogPreview from "../../page"; // Ensure this is the correct import path
 
 const BlogManager: React.FC = () => {
@@ -26,8 +26,8 @@ const BlogManager: React.FC = () => {
   return (
     <div className="flex min-h-screen">
       {mobile ? (
-        <div className="w-full">
-          <BlogPost />
+        <div>
+          <BlogFetch mobile={mobile} />
           <BlogPreview />
         </div>
       ) : (
@@ -36,7 +36,7 @@ const BlogManager: React.FC = () => {
             <BlogPreview />
           </div>
           <div>
-            <BlogPost />
+            <BlogFetch mobile={mobile} />
           </div>
         </div>
       )}

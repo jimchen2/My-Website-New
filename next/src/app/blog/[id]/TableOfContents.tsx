@@ -16,6 +16,10 @@ const buildTree = (headings: TOCProps["headings"]): TreeNode[] => {
   let currentParent: TreeNode | null = null;
 
   for (const heading of headings) {
+    if (heading.tagName !== "H2") {
+      continue;
+    }
+
     const node: TreeNode = {
       id: heading.id,
       text: heading.text,
@@ -23,17 +27,8 @@ const buildTree = (headings: TOCProps["headings"]): TreeNode[] => {
       children: [],
     };
 
-    if (!currentParent) {
-      tree.push(node);
-      currentParent = node;
-    } else {
-      if (heading.tagName === "H2") {
-        tree.push(node);
-        currentParent = node;
-      } else {
-        currentParent.children.push(node);
-      }
-    }
+    tree.push(node);
+    currentParent = node;
   }
 
   return tree;
@@ -52,14 +47,14 @@ const TableOfContents: React.FC<TOCProps> = ({ headings }) => {
       const offset = 110; // Adjust this value to the offset you need
       const elementPosition = element.getBoundingClientRect().top;
       const offsetPosition = elementPosition + window.scrollY - offset;
-  
+
       window.scrollTo({
         top: offsetPosition,
-        behavior: "smooth"
+        behavior: "smooth",
       });
     }
   };
-  
+
   const renderTree = (nodes: TreeNode[], depth = 0) => {
     return (
       <ul className={`pl-${depth * 4}`}>

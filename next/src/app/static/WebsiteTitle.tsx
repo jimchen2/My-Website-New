@@ -9,7 +9,7 @@ const JimChenWebsite: React.FC = () => {
         href="/"
         className=" text-lg text-gray-800 dark:text-white hover:text-gray-600 dark:hover:text-gray-300 transition-colors duration-300"
       >
-        Jim Chen's Website
+        Jim Chen&apos;s Website
       </Link>
     </>
   );

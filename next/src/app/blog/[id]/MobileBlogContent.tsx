@@ -24,7 +24,6 @@ function extractHeadings(html: string): Heading[] {
     text: heading.textContent || "", // Ensure text is always a string
     tagName: heading.tagName,
   }));
-  console.log(headings);
   return headings;
 }
 
@@ -61,6 +60,12 @@ const BlogContent: React.FC<BlogContentProps> = ({
 
       <div className="blog-content-container">
         <div className="flex flex-col lg:flex-row">
+          <br />
+          <br />
+          <div className="lg:w-1/4 lg:pl-8 lg:sticky lg:top-20 overflow-y-auto">
+            <TableOfContents headings={headings} />
+          </div>
+
           <div className="max-w-3xl mx-auto p-4 flex-grow">
             <h1 className="text-3xl font-bold mb-4">{title}</h1>
             <div className="mt-4">
@@ -82,9 +87,6 @@ const BlogContent: React.FC<BlogContentProps> = ({
             <span className="inline-block bg-gray-300 text-black-200 text-xs px-2 py-1 rounded-full">
               {type}
             </span>
-          </div>
-          <div className="lg:w-1/4 lg:pl-8 lg:sticky lg:top-20 h-screen overflow-y-auto">
-            <TableOfContents headings={headings} />
           </div>
         </div>
       </div>

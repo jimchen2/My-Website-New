@@ -1,4 +1,3 @@
-// app/layout.tsx
 import React, { ReactNode } from 'react';
 import Navbar from './static/navbar';
 import Footer from './static/footer';
@@ -15,7 +14,8 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
         <head>
           <meta charSet="UTF-8" />
           <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-          <title>Jim Chen's Website</title>
+          <title>Jim Chen&apos;s Website</title>
+          <link rel="icon" href="/favicon.ico" />
         </head>
         <body className="flex flex-col min-h-screen">
           <Navbar />

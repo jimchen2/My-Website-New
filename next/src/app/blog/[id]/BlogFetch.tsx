@@ -3,6 +3,7 @@
 import { useParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import BlogContent from "./BlogContent"; // Import the BlogContent component
+import MobileBlogContent from "./MobileBlogContent"; // Import the MobileBlogContent component
 
 interface Post {
   body: string;
@@ -11,7 +12,11 @@ interface Post {
   date: string;
 }
 
-const BlogPost: React.FC = () => {
+interface BlogPostProps {
+  mobile: boolean;
+}
+
+const BlogPost: React.FC<BlogPostProps> = ({ mobile }) => {
   const params = useParams();
   const id = params?.id as string;
   const [post, setPost] = useState<Post[] | null>(null);
@@ -42,12 +47,21 @@ const BlogPost: React.FC = () => {
 
   return (
     <div>
-      <BlogContent
-        title={post[0].title}
-        type={post[0].type}
-        date={post[0].date}
-        body={post[0].body}
-      />
+      {mobile ? (
+        <MobileBlogContent
+          title={post[0].title}
+          type={post[0].type}
+          date={post[0].date}
+          body={post[0].body}
+        />
+      ) : (
+        <BlogContent
+          title={post[0].title}
+          type={post[0].type}
+          date={post[0].date}
+          body={post[0].body}
+        />
+      )}
     </div>
   );
 };

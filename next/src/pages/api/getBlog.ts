@@ -1,6 +1,6 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 import dbConnect from '../../db/dbConnect'; // Adjust the path as necessary
-import Blog from '../models/blog.model';
+import Blog from '../../app/models/blog.model';
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   await dbConnect();

@@ -23,6 +23,7 @@ sudo systemctl enable --now mongod
 
 sudo mkdir -p /var/www; sudo git clone https://github.com/jimchen2/My-Website-New /var/www/My-Website; sudo chown -R builduser:builduser /var/www/My-Website
 sudo -u builduser bash -c 'cd /var/www/My-Website; mongorestore --dir=./dump; mongoimport --db test --file ./dump/test/blogs.json'
+sudo -u builduser bash -c 'cd /var/www/My-Website/next; npm install;'
 
 
 sudo systemctl stop nginx 
@@ -31,18 +32,12 @@ sudo certbot certonly --standalone -d jimchen.me -d www.jimchen.me --email jimch
 sudo systemctl start ufw
 
 
-sudo -u builduser bash -c 'cd /var/www/My-Website/next; npm install;'
-
-
-################## DEVELOPEMENT #############################################
-
-# screen 
-# npm run dev
-# exit screen
-
-
 mkdir -p /etc/nginx/{sites-available,sites-enabled} && sudo ln -sf /etc/nginx/sites-available/mywebsite.conf /etc/nginx/sites-enabled/
 sudo cp /var/www/My-Website/mywebsite.conf /etc/nginx/sites-available/mywebsite.conf
 sudo cp /var/www/My-Website/nginx.conf /etc/nginx/nginx.conf
 sudo systemctl enable --now nginx
 
+
+sudo cp /var/www/My-Website/my-website.service /etc/systemd/system/my-website.service
+sudo cp /var/www/My-Website/update-mywebsite.service /etc/systemd/system/
+sudo systemctl daemon-reload && sudo systemctl enable --now my-website.service
