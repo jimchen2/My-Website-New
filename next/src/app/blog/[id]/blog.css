@@ -15,7 +15,11 @@
   word-break: break-word; /* Ensure long words break */
 }
 
-.scoped-styles p,
+.scoped-styles p{
+    margin-bottom: 1em;
+    line-height: 1.5;
+  }
+
 .scoped-styles code {
   font-size: 16px;
   line-height: 1.6;
