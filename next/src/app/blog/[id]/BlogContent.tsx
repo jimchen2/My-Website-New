@@ -24,7 +24,6 @@ function extractHeadings(html: string): Heading[] {
     text: heading.textContent || "", // Ensure text is always a string
     tagName: heading.tagName,
   }));
-  console.log(headings);
   return headings;
 }
 
