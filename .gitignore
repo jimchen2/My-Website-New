@@ -5,7 +5,7 @@
 /next/.pnp
 /next.pnp.js
 /next.yarn/install-state.gz
-/dump/markdown_documents/
+/dump/markdown_documents/*
 
 !/dump/markdown_documents/.gitkeep
 
@@ -21,20 +21,20 @@
 /next/build
 
 # misc
-/next.DS_Store
-/next*.pem
+/next/next.DS_Store
+/next/next*.pem
 
 # debug
-/nextnpm-debug.log*
-/nextyarn-debug.log*
-/nextyarn-error.log*
+/next/nextnpm-debug.log*
+/next/nextyarn-debug.log*
+/next/nextyarn-error.log*
 
 # local env files
-/next.env*.local
+/next/next.env*.local
 
 # vercel
-/next.vercel
+/next/next.vercel
 
 # typescript
-/next*.tsbuildinfo
-/nextnext-env.d.ts
+/next/next*.tsbuildinfo
+/next/nextnext-env.d.ts
