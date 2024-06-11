@@ -6,6 +6,9 @@
 /next.pnp.js
 /next.yarn/install-state.gz
 /dump/markdown_documents/
+
+!/dump/markdown_documents/.gitkeep
+
 # testing
 /next/coverage
 /next/package-lock.json
