@@ -30,7 +30,7 @@ const Footer = () => {
       <div className="container mx-auto px-4 md:px-8 lg:px-16">
         <div className="flex flex-wrap justify-between">
           {footerSections.map((section, index) => (
-            <div key={index} className="w-full md:w-1/2 mb-4 md:mb-0">
+            <div key={index} className="w-full md:w-1/3 lg:w-1/4 mb-4 md:mb-0">
               <h3 className="text-lg font-bold mb-2">{section.title}</h3>
               <ul className="text-sm">
                 {section.links.map((link, linkIndex) => (
