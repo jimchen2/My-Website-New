@@ -14,6 +14,13 @@ const footerSections = [
       { href: "https://github.com/jimchen2", text: "GitHub", external: true },
       { href: "https://www.kaggle.com/jc4214", text: "Kaggle", external: true }
     ]
+  },
+  {
+    title: "Links",
+    links: [
+      { href: "https://chat.jimchen.me", text: "My LLM Arena (chat.jimchen.me)", external: true },
+      { href: "https://public.jimchen.me", text: "My Public S3 Bucket (public.jimchen.me)", external: true }
+    ]
   }
 ];
 
