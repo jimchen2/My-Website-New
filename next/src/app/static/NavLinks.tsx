@@ -11,7 +11,7 @@ const hoverEffect = {
 
 const navItems = [
   { href: "/about", label: "About" },
-  { href: "/search/%20", label: "Blog" },
+  { href: "/", label: "Blog" },
 ];
 
 const NavLinks: React.FC = () => {

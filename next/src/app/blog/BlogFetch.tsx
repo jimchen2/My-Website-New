@@ -1,6 +1,5 @@
 "use client";
 
-import { useParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import BlogContent from "./BlogContent"; // Import the BlogContent component
 import MobileBlogContent from "./MobileBlogContent"; // Import the MobileBlogContent component
@@ -14,11 +13,10 @@ interface Post {
 
 interface BlogPostProps {
   mobile: boolean;
+  id: string; // Add 'id' to the component's props
 }
 
-const BlogPost: React.FC<BlogPostProps> = ({ mobile }) => {
-  const params = useParams();
-  const id = params?.id as string;
+const BlogFetch: React.FC<BlogPostProps> = ({ mobile, id }) => {
   const [post, setPost] = useState<Post[] | null>(null);
   const [loading, setLoading] = useState(true);
 
@@ -35,8 +33,8 @@ const BlogPost: React.FC<BlogPostProps> = ({ mobile }) => {
           setLoading(false);
         });
     }
-  }, [id]);
-
+  }, [id]); 
+  
   if (loading) {
     return <div className="text-center text-gray-500">Loading...</div>;
   }
@@ -66,4 +64,4 @@ const BlogPost: React.FC<BlogPostProps> = ({ mobile }) => {
   );
 };
 
-export default BlogPost;
+export default BlogFetch;

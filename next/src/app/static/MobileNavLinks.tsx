@@ -8,7 +8,7 @@ const hoverEffect = { hover: { scale: 1.05 } };
 
 const navItems = [
   { href: "/about", label: "About" },
-  { href: "/search/%20", label: "Blog" },
+  { href: "/", label: "Blog" },
 ];
 
 const MobileNav: React.FC = () => (

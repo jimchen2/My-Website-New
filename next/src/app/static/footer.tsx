@@ -12,14 +12,15 @@ const footerSections = [
     title: "Tech",
     links: [
       { href: "https://github.com/jimchen2", text: "GitHub", external: true },
-      { href: "https://www.kaggle.com/jc4214", text: "Kaggle", external: true }
+      { href: "https://www.kaggle.com/jc4214", text: "Kaggle", external: true },
     ]
   },
   {
     title: "Links",
     links: [
-      { href: "https://chat.jimchen.me", text: "My LLM Arena (chat.jimchen.me)", external: true },
-      { href: "https://public.jimchen.me", text: "My Public S3 Bucket (public.jimchen.me)", external: true }
+      { href: "https://public.jimchen.me", text: "My Public S3 Bucket (public.jimchen.me)", external: true },
+      { href: "https://chat.jimchen.me", text: "My LLM Playground 1 (chat.jimchen.me)", external: true },
+      { href: "https://lobe.jimchen.me/chat", text: "My LLM Playground 2 (lobe.jimchen.me/chat)", external: true }  // New link added here
     ]
   }
 ];
@@ -54,7 +55,7 @@ const Footer = () => {
             © 2024 JC | Powered by Next.js 
           </p>
           <a
-            href="https://github.com/jimchen2/My-Website"
+            href="https://github.com/jimchen2/My-Website-New"
             target="_blank"
             rel="noopener noreferrer"
             className="text-sm text-gray-500 hover:text-gray-600"
