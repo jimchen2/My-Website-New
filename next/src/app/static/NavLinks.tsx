@@ -11,14 +11,13 @@ const hoverEffect = {
 
 const navItems = [
   { href: "/about", label: "About" },
-  { href: "/", label: "Blog" },
+  { href: "/self-host", label: "Self-Hosted Apps" },
 ];
 
 const NavLinks: React.FC = () => {
   return (
     <ul className="flex space-x-4 bg-white">
       <span style={{ minWidth: "150px" }}></span>
-
       {navItems.map((item) => (
         <motion.li key={item.href} whileHover={hoverEffect.hover}>
           <Link
