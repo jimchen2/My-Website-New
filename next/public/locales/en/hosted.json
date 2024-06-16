@@ -37,8 +37,8 @@
       "description": "Keep a watchful eye on your system's performance with Prometheus. Monitor key metrics, set up alerts, and ensure the smooth operation of your personal infrastructure."
     },
     "stash": {
-      "name": "Stash (NSFW)",
-      "description": "Organize and manage your digital media collection, including adult content, with ease using Stash. Please note that this service contains material that may not be suitable for all audiences."
+      "name": "Stash",
+      "description": "Organize and manage your digital media collection with ease using Stash."
     }
   }
 }
