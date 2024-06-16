@@ -6,7 +6,11 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "dev:zh": "cross-env NEXT_PUBLIC_LANG=zh next dev",
+    "dev:en": "cross-env NEXT_PUBLIC_LANG=en next dev",
+    "build:zh": "cross-env NEXT_PUBLIC_LANG=zh next build",
+    "build:en": "cross-env NEXT_PUBLIC_LANG=en next build"
   },
   "dependencies": {
     "@headlessui/react": "^2.0.4",
@@ -21,6 +25,7 @@
     "better-react-mathjax": "^2.0.3",
     "cross-env": "^7.0.3",
     "dompurify": "^3.1.4",
+    "dotenv": "^16.4.5",
     "framer-motion": "^11.2.9",
     "i18next": "^23.11.5",
     "mathjax": "^3.2.2",

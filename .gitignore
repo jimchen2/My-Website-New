@@ -9,6 +9,11 @@
 
 !/dump/markdown_documents/.gitkeep
 
+
+/dump/cn_markdown_documents/*
+
+!/dump/cn_markdown_documents/.gitkeep
+
 # testing
 /next/coverage
 /next/package-lock.json
@@ -28,9 +33,6 @@
 /next/nextnpm-debug.log*
 /next/nextyarn-debug.log*
 /next/nextyarn-error.log*
-
-# local env files
-/next/next.env*.local
 
 # vercel
 /next/next.vercel

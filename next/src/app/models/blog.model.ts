@@ -1,5 +1,8 @@
 import mongoose, { Schema, Document, Model } from "mongoose";
 
+const collection =
+  process.env.NEXT_PUBLIC_LANG == "en" ? "blogs" : "translated_blog";
+
 interface IBlog extends Document {
   title: string;
   date: string;
@@ -8,7 +11,7 @@ interface IBlog extends Document {
 }
 
 const blogSchema: Schema = new Schema(
-  {
+  { 
     title: {
       type: String,
       default: "",
@@ -26,7 +29,7 @@ const blogSchema: Schema = new Schema(
       default: "",
     },
   },
-  { versionKey: false }
+  { versionKey: false, collection: collection }
 );
 
 const Blog: Model<IBlog> =

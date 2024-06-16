@@ -23,7 +23,7 @@ sudo systemctl enable --now mongod
 
 sudo mkdir -p /var/www; sudo git clone https://github.com/jimchen2/My-Website-New /var/www/My-Website; sudo chown -R builduser:builduser /var/www/My-Website
 sudo -u builduser bash -c 'cd /var/www/My-Website; mongorestore --dir=./dump; mongoimport --db test --file ./dump/test/blogs.json'
-sudo -u builduser bash -c 'cd /var/www/My-Website/next; npm install;'
+sudo -u builduser bash -c 'cd /var/www/My-Website/next; export NODE_OPTIONS="--max_old_space_size=2000"; npm install;npm run build:en;'
 
 
 sudo systemctl stop nginx 

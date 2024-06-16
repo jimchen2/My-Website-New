@@ -3,7 +3,7 @@ import React from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { useTranslation } from "react-i18next";
-import i18n from "../i18n"; // Import the i18n instance
+
 
 const linkStyle =
   "px-2 py-2 rounded hover:shadow-lg transition-all duration-300 ease-in-out transform hover:-translate-y-1";
@@ -13,7 +13,6 @@ const hoverEffect = {
 
 const NavLinks: React.FC = () => {
   const { t } = useTranslation("header");
-
 
   const navItems = [
     { href: "/about", label: t("about") },

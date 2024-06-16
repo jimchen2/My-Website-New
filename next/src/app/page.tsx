@@ -36,7 +36,11 @@ const BlogManager: React.FC = () => {
       {mobile ? (
         <div>
           <BlogFetch mobile={mobile} id={selectedBlogId} />
-          <BlogPreview mobile={mobile} newlines={4} onSelectBlogId={handleSelectBlogId} />
+          <BlogPreview
+            mobile={mobile}
+            newlines={4}
+            onSelectBlogId={handleSelectBlogId}
+          />
         </div>
       ) : (
         <div className="flex">

@@ -1,9 +1,10 @@
 import i18n from "i18next";
 import { initReactI18next } from "react-i18next";
 
+const lang = process.env.NEXT_PUBLIC_LANG || "en";
+
 i18n.use(initReactI18next).init({
-  fallbackLng: "en",
-  lng: "zh",
+  lng: lang,
   resources: {
     en: {
       common: require("../../public/locales/en/common.json"),
@@ -16,7 +17,7 @@ i18n.use(initReactI18next).init({
       header: require("../../public/locales/zh/header.json"),
     },
   },
-  ns: ["common"],
+  ns: ["common", "footer", "header"],
   defaultNS: "common",
   debug: true,
   interpolation: {

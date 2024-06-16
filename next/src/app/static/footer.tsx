@@ -1,8 +1,6 @@
 "use client";
-import { useEffect } from "react";
 import React from "react";
 import { useTranslation } from "react-i18next";
-import i18n from "../i18n"; // Import the i18n instance
 
 const Footer = () => {
   const { t } = useTranslation("footer");

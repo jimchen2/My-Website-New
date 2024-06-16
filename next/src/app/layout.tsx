@@ -1,12 +1,13 @@
-import React, { ReactNode } from 'react';
-import Navbar from './static/navbar';
-import Footer from './static/footer';
-import './globals.css';
+"use client";
+import React, { ReactNode } from "react";
+import Navbar from "./static/navbar";
+import Footer from "./static/footer";
+import "./globals.css";
+import "./i18n";
 
 interface LayoutProps {
   children: ReactNode;
 }
-
 
 const Layout: React.FC<LayoutProps> = ({ children }) => {
   return (
@@ -14,15 +15,16 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
       <html lang="en">
         <head>
           <meta charSet="UTF-8" />
-          <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+          <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1.0"
+          />
           <title>Jim Chen&apos;s Website</title>
           <link rel="icon" href="/favicon.ico" />
         </head>
         <body className="flex flex-col min-h-screen">
           <Navbar />
-          <main className="flex-grow">
-            {children}
-          </main>
+          <main className="flex-grow">{children}</main>
           <Footer />
         </body>
       </html>

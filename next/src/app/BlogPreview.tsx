@@ -24,7 +24,7 @@ interface BlogPreviewProps {
 }
 
 const BlogPreview: React.FC<BlogPreviewProps> = React.memo(
-  ({ mobile, newlines = 4, fontSize = "text-2xl", onSelectBlogId }) => { 
+  ({ mobile, newlines = 4, fontSize = "text-2xl", onSelectBlogId }) => {
     const [blogPreviews, setBlogPreviews] = useState<BlogType[]>([]);
     const [openDropdowns, setOpenDropdowns] = useState<{
       [key: string]: boolean;
@@ -56,6 +56,9 @@ const BlogPreview: React.FC<BlogPreviewProps> = React.memo(
 
     const handleSelectBlog = (uuid: string) => {
       onSelectBlogId(uuid);
+      if (mobile) {
+        window.scrollTo({ top: 0, behavior: "auto" });
+      }
     };
 
     const renderNewlines = () => {
@@ -74,14 +77,16 @@ const BlogPreview: React.FC<BlogPreviewProps> = React.memo(
               <li key={blogType.type}>
                 <div className="rounded-lg shadow-lg p-4 transition duration-300 ease-in-out transform">
                   <div
-                    className="flex justify-between items-center cursor-pointer min-w-[250px]"
+                    className={`flex items-center cursor-pointer justify-between ${
+                      mobile ? "min-w-[320px]" : ""
+                    }`}
                     onClick={() => toggleDropdown(blogType.type)}
                   >
-                    <h4 className="ml-[5%] font-medium text-gray-800">
+                    <h4 className="font-medium text-gray-800">
                       {blogType.type} ({blogType.blogs.length})
                     </h4>
                     <ChevronDownIcon
-                      className={`h-5 w-5 text-gray-800 duration-300  ${
+                      className={`h-5 w-5 text-gray-800 duration-300 ${
                         openDropdowns[blogType.type] ? "rotate-180" : "rotate-0"
                       }`}
                     />
@@ -91,11 +96,11 @@ const BlogPreview: React.FC<BlogPreviewProps> = React.memo(
                       {blogType.blogs.map((blog) => (
                         <li
                           key={blog._id}
-                          className="p-4 rounded-lg transition duration-300 ease-in-out transform hover:scale-105 hover:underline"
+                          className="p-4 rounded-lg transition duration-300 ease-in-out transform hover:bg-gray-200 hover:shadow-lg hover:cursor-pointer"
                           onClick={() => handleSelectBlog(blog.uuid)}
                         >
                           <div className="flex justify-center">
-                            <h6 className="font-semibold text-gray-700 text-center">
+                            <h6 className="text-black text-center">
                               {blog.title}
                             </h6>
                           </div>
