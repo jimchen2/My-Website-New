@@ -18,7 +18,7 @@ const highlight = (text: string, pattern?: string) =>
   pattern
     ? text.split(new RegExp(`(${pattern})`, "gi")).map((part, index) =>
         part.match(new RegExp(`(${pattern})`, "gi")) ? (
-          <span key={index} className="bg-gray-300 font-bold">
+          <span key={index} className=" font-bold">
             {part}
           </span>
         ) : (
@@ -32,7 +32,7 @@ const truncateText = (text: string, maxLength: number) =>
 
 const PreviewCard: React.FC<PreviewCardProps> = ({ blog, highlightPattern }) => (
   <Link href={`/blog/${blog.date}`}>
-    <li className="bg-white shadow-lg rounded-lg p-6 cursor-pointer hover:bg-gray-50 max-w-screen-lg mx-auto transition duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-105">
+    <li className=" shadow-lg rounded-lg p-6 cursor-pointer  max-w-screen-lg mx-auto transition duration-300 ease-in-out transform">
       <h2 className="text-2xl font-bold text-indigo-600 flex justify-between items-center">
         <span className="hover:underline">{blog.title}</span>{blog.type}
       </h2>

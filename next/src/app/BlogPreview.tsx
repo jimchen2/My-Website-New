@@ -74,7 +74,7 @@ const BlogPreview: React.FC<BlogPreviewProps> = React.memo(
             <ul className="space-y-4 overflow-x-hidden">
               {blogPreviews.map((blogType) => (
                 <li key={blogType.type}>
-                  <div className="rounded-lg shadow-lg p-4 transition duration-300 ease-in-out transform bg-gray-50">
+                  <div className="rounded-lg shadow-lg p-4 transition duration-300 ease-in-out transform">
                     <div
                       className="flex justify-between items-center cursor-pointer"
                       onClick={() => toggleDropdown(blogType.type)}
