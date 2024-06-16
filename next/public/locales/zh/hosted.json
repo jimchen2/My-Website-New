@@ -37,8 +37,8 @@
       "description": "使用 Prometheus 密切关注您系统的性能。监控关键指标，设置警报，确保您的个人基础设施平稳运行。"
     },
     "stash": {
-      "name": "Stash（NSFW）",
-      "description": "使用 Stash 轻松组织和管理您的数字媒体收藏，包括成人内容。请注意，此服务包含可能不适合所有受众的材料。"
+      "name": "Stash",
+      "description": "使用 Stash 轻松组织和管理您的数字媒体收藏。"
     }
   }
 }
