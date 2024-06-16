@@ -33,11 +33,11 @@ sudo systemctl start ufw
 
 
 mkdir -p /etc/nginx/{sites-available,sites-enabled} && sudo ln -sf /etc/nginx/sites-available/mywebsite.conf /etc/nginx/sites-enabled/
-sudo cp /var/www/My-Website/mywebsite.conf /etc/nginx/sites-available/mywebsite.conf
-sudo cp /var/www/My-Website/nginx.conf /etc/nginx/nginx.conf
+sudo cp /var/www/My-Website/setup/mywebsite-en.conf /etc/nginx/sites-available/mywebsite.conf
+sudo cp /var/www/My-Website/setup/nginx.conf /etc/nginx/nginx.conf
 sudo systemctl enable --now nginx
 
 
-sudo cp /var/www/My-Website/my-website.service /etc/systemd/system/my-website.service
-sudo cp /var/www/My-Website/update-mywebsite.service /etc/systemd/system/
+sudo cp /var/www/My-Website/setup/my-website.service /etc/systemd/system/my-website.service
+sudo cp /var/www/My-Website/setup/update-mywebsite-en.service /etc/systemd/system/
 sudo systemctl daemon-reload && sudo systemctl enable --now my-website.service
