@@ -7,7 +7,7 @@ Type=oneshot
 User=builduser
 WorkingDirectory=/var/www/My-Website
 ExecStartPre=/bin/bash -c 'cd /var/www/My-Website && git pull'
-ExecStartPre=/bin/bash -c 'cd /var/www/My-Website/next &&  export NODE_OPTIONS="--max_old_space_size=2000" && npm install &&  npm run build:zh'
+ExecStartPre=/bin/bash -c 'cd /var/www/My-Website/next &&  n && npm install &&  npm run build:zh'
 ExecStartPre=/bin/bash -c 'mongosh --eval "db.blogs.drop()" --db test && mongoimport --db test --collection blogs --file ./dump/test/blogs.json'
 ExecStart=/usr/bin/sudo /bin/systemctl restart my-website.service
 

@@ -36,5 +36,5 @@ sudo cp /var/www/My-Website/setup/nginx.conf /etc/nginx/nginx.conf
 sudo systemctl enable --now nginx
 
 
-sudo cp /var/www/My-Website/setup/{my-website.service,update-mywebsite-en.service} /etc/systemd/system/
-sudo systemctl daemon-reload && sudo systemctl enable --now my-website.service && sudo systemctl start update-mywebsite-en.service
+sudo cp /var/www/My-Website/setup/{my-website.service,update-mywebsite-zh.service} /etc/systemd/system/
+sudo systemctl daemon-reload && sudo systemctl enable --now my-website.service && sudo systemctl start update-mywebsite-zh.service
