@@ -36,12 +36,13 @@ const BlogManager: React.FC = () => {
       {mobile ? (
         <div>
           <BlogFetch mobile={mobile} id={selectedBlogId} />
-          <BlogPreview newlines={0} onSelectBlogId={handleSelectBlogId} />
+          <BlogPreview mobile={mobile} newlines={4} onSelectBlogId={handleSelectBlogId} />
         </div>
       ) : (
         <div className="flex">
           <div className="w-[300px] sticky top-0 h-screen overflow-y-auto">
             <BlogPreview
+              mobile={mobile}
               newlines={2}
               fontSize="text-lg"
               onSelectBlogId={handleSelectBlogId} // Pass the handler here

@@ -17,13 +17,14 @@ interface BlogType {
 }
 
 interface BlogPreviewProps {
+  mobile: boolean; // Added mobile prop
   newlines?: number;
   fontSize?: string;
   onSelectBlogId: (uuid: string) => void;
 }
 
 const BlogPreview: React.FC<BlogPreviewProps> = React.memo(
-  ({ newlines = 4, fontSize = "text-2xl", onSelectBlogId }) => {
+  ({ mobile, newlines = 4, fontSize = "text-2xl", onSelectBlogId }) => { 
     const [blogPreviews, setBlogPreviews] = useState<BlogType[]>([]);
     const [openDropdowns, setOpenDropdowns] = useState<{
       [key: string]: boolean;
@@ -68,51 +69,45 @@ const BlogPreview: React.FC<BlogPreviewProps> = React.memo(
           <header className={`${fontSize} font-bold p-4 text-center`}>
             My Blogs
           </header>
-          {error ? (
-            <div className="text-center">{error}</div>
-          ) : (
-            <ul className="space-y-4 overflow-x-hidden">
-              {blogPreviews.map((blogType) => (
-                <li key={blogType.type}>
-                  <div className="rounded-lg shadow-lg p-4 transition duration-300 ease-in-out transform">
-                    <div
-                      className="flex justify-between items-center cursor-pointer"
-                      onClick={() => toggleDropdown(blogType.type)}
-                    >
-                      <h4 className="ml-[5%] font-medium text-gray-800">
-                        {blogType.type} ({blogType.blogs.length})
-                      </h4>
-                      <ChevronDownIcon
-                        className={`h-5 w-5 text-gray-800 duration-300 ${
-                          openDropdowns[blogType.type]
-                            ? "rotate-180"
-                            : "rotate-0"
-                        }`}
-                      />
-                    </div>
-                    {openDropdowns[blogType.type] && (
-                      <ul className="mt-2 space-y-2">
-                        {blogType.blogs.map((blog) => (
-                          <li
-                            key={blog._id}
-                            className="p-4 rounded-lg transition duration-300 ease-in-out transform hover:scale-105 hover:underline"
-                            onClick={() => handleSelectBlog(blog.uuid)}
-                          >
-                            <div className="flex justify-center">
-                              <h6 className="font-semibold text-gray-700 text-center">
-                                {blog.title}
-                              </h6>
-                            </div>
-                          </li>
-                        ))}
-                      </ul>
-                    )}
+          <ul className="space-y-4 overflow-x-hidden">
+            {blogPreviews.map((blogType) => (
+              <li key={blogType.type}>
+                <div className="rounded-lg shadow-lg p-4 transition duration-300 ease-in-out transform">
+                  <div
+                    className="flex justify-between items-center cursor-pointer min-w-[250px]"
+                    onClick={() => toggleDropdown(blogType.type)}
+                  >
+                    <h4 className="ml-[5%] font-medium text-gray-800">
+                      {blogType.type} ({blogType.blogs.length})
+                    </h4>
+                    <ChevronDownIcon
+                      className={`h-5 w-5 text-gray-800 duration-300  ${
+                        openDropdowns[blogType.type] ? "rotate-180" : "rotate-0"
+                      }`}
+                    />
                   </div>
-                </li>
-              ))}
-              {renderNewlines()}
-            </ul>
-          )}
+                  {openDropdowns[blogType.type] && (
+                    <ul className="mt-2 space-y-2">
+                      {blogType.blogs.map((blog) => (
+                        <li
+                          key={blog._id}
+                          className="p-4 rounded-lg transition duration-300 ease-in-out transform hover:scale-105 hover:underline"
+                          onClick={() => handleSelectBlog(blog.uuid)}
+                        >
+                          <div className="flex justify-center">
+                            <h6 className="font-semibold text-gray-700 text-center">
+                              {blog.title}
+                            </h6>
+                          </div>
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+                </div>
+              </li>
+            ))}
+            {renderNewlines()}
+          </ul>
         </div>
       </div>
     );

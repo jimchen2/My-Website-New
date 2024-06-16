@@ -1,9 +1,12 @@
 "use client";
 import { useRouter } from "next/navigation";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useTranslation } from "react-i18next";
+import i18n from "../i18n"; // Import the i18n instance
 
 const MobileSearchBar = () => {
   const [query, setQuery] = useState("");
+  const { t } = useTranslation("header");
   const router = useRouter();
 
   const handleSearch = (e) => {
@@ -16,11 +19,11 @@ const MobileSearchBar = () => {
       <input
         value={query}
         onChange={(e) => setQuery(e.target.value)}
-        placeholder="Search..."
+        placeholder={t("searchPlaceholder")}
         className="w-full bg-gray-200 py-2 px-4 rounded-full focus:outline-none"
       />
       <button className="bg-white text-gray-800 border border-gray-300 px-4 py-2 rounded-full">
-        Search
+        {t("searchButton")}
       </button>
     </form>
   );
