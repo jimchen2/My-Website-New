@@ -86,7 +86,7 @@ const ServiceGuide: React.FC = () => {
               className="rounded-lg p-6 hover:shadow-lg transition duration-300"
             >
               <a href={service.link} target="_blank" rel="noopener noreferrer">
-                <h2 className="text-2xl text-gray-800 underline font-semibold mb-2 hover:text-blue-800">
+                <h2 className="text-2xl text-gray-800 underline font-semibold mb-2">
                   {service.name}
                 </h2>
               </a>
@@ -98,7 +98,7 @@ const ServiceGuide: React.FC = () => {
                     href={service.repo}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-blue-500 hover:underline"
+                    className="text-gray-800 hover:underline"
                   >
                     {service.repo}
                   </a>

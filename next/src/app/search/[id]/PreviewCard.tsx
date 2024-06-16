@@ -33,7 +33,7 @@ const truncateText = (text: string, maxLength: number) =>
 const PreviewCard: React.FC<PreviewCardProps> = ({ blog, highlightPattern }) => (
   <Link href={`/blog/${blog.date}`}>
     <li className=" shadow-lg rounded-lg p-6 cursor-pointer  max-w-screen-lg mx-auto transition duration-300 ease-in-out transform">
-      <h2 className="text-2xl font-bold text-indigo-600 flex justify-between items-center">
+      <h2 className="text-2xl font-bold text-gray-800 flex justify-between items-center">
         <span className="hover:underline">{blog.title}</span>{blog.type}
       </h2>
       <p className="text-gray-500 text-sm font-mono">{new Date(blog.date).toLocaleDateString()}</p>
