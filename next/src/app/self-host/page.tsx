@@ -1,74 +1,68 @@
+"use client";
 
 import React from "react";
+import { useTranslation } from "react-i18next";
 
 const ServiceGuide: React.FC = () => {
+  const { t } = useTranslation("hosted");
+
   const services = [
     {
-      name: "Lobe Chat",
-      description:
-        "Explore the world of Language Learning Models (LLMs) with Lobe Chat. Access cutting-edge models like GPT-4, Claude Opus, Gemini, Qwen, LLama, and Yi-Large. Use the code '8294' for access.",
+      name: t("services.lobeChat.name"),
+      description: t("services.lobeChat.description"),
       link: "https://lobe.jimchen.me",
       repo: "https://github.com/lobehub/lobe-chat",
     },
     {
-      name: "ChatGPT Next Web",
-      description:
-        "Dive into another LLM playground with ChatGPT Next Web. Experience the capabilities of GPT-4 and Gemini models. Use the code '8294' for access.",
+      name: t("services.chatGPTNextWeb.name"),
+      description: t("services.chatGPTNextWeb.description"),
       link: "https://chat.jimchen.me",
       repo: "https://github.com/ChatGPTNextWeb/ChatGPT-Next-Web",
     },
     {
-      name: "My Public S3 Bucket",
-      description:
-        "A publicly accessible S3 bucket containing useful files, including the Clash tool for bypassing UFW restrictions.",
+      name: t("services.publicS3Bucket.name"),
+      description: t("services.publicS3Bucket.description"),
       link: "https://public.jimchen.me",
     },
     {
-      name: "Vaultwarden",
-      description:
-        "Secure your digital life with Vaultwarden, a self-hosted password manager that ensures your sensitive information remains under your control. Fully compatible with the popular KeePass password manager.",
+      name: t("services.vaultwarden.name"),
+      description: t("services.vaultwarden.description"),
       link: "https://vault.jimchen.me",
       repo: "https://github.com/dani-garcia/vaultwarden",
     },
     {
-      name: "Uptime Kuma",
-      description:
-        "Monitor the availability and performance of your personal website with Uptime Kuma. Stay informed about any issues or downtime, ensuring a seamless online presence.",
+      name: t("services.uptimeKuma.name"),
+      description: t("services.uptimeKuma.description"),
       link: "https://status.jimchen.me/status/jc",
       repo: "https://github.com/louislam/uptime-kuma",
     },
     {
-      name: "Immich",
-      description:
-        "Preserve and relive your precious moments with Immich, a personal gallery designed to showcase your photos and videos. Create a beautiful visual timeline of your life.",
+      name: t("services.immich.name"),
+      description: t("services.immich.description"),
       link: "https://immich.jimchen.me",
       repo: "https://github.com/immich-app/immich",
     },
     {
-      name: "Portainer",
-      description:
-        "Simplify your Docker container management with Portainer. Easily deploy, monitor, and control your containerized applications through an intuitive web-based interface.",
+      name: t("services.portainer.name"),
+      description: t("services.portainer.description"),
       link: "https://portainer.jimchen.me",
       repo: "https://github.com/portainer/portainer",
     },
     {
-      name: "Grafana",
-      description:
-        "Visualize and analyze your personal data with Grafana. Create stunning dashboards and gain valuable insights into various aspects of your life and system metrics.",
+      name: t("services.grafana.name"),
+      description: t("services.grafana.description"),
       link: "https://grafana.jimchen.me",
       repo: "https://github.com/grafana/grafana",
     },
     {
-      name: "Prometheus",
-      description:
-        "Keep a watchful eye on your system's performance with Prometheus. Monitor key metrics, set up alerts, and ensure the smooth operation of your personal infrastructure.",
+      name: t("services.prometheus.name"),
+      description: t("services.prometheus.description"),
       link: "https://prometheus.jimchen.me",
       repo: "https://github.com/prometheus/prometheus",
     },
     {
-      name: "Stash (NSFW)",
-      description:
-        "Organize and manage your digital media collection, including adult content, with ease using Stash. Please note that this service contains material that may not be suitable for all audiences.",
+      name: t("services.stash.name"),
+      description: t("services.stash.description"),
       link: "https://stash.jimchen.me",
       repo: "https://github.com/stashapp/stash",
     },

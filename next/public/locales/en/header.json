@@ -1,8 +1,8 @@
 {
-    "about": "About",
-    "selfHostedApps": "Self-Hosted Apps",
-    "websiteName": "Jim Chen's Website",
-    "searchPlaceholder": "Search...",
-    "searchButton": "Search"  
-  }
-  
+  "about": "About",
+  "selfHostedApps": "Self-Hosted Apps",
+  "websiteName": "Jim Chen's Website",
+  "searchPlaceholder": "Search...",
+  "searchButton": "Search",
+  "myBlogs": "My Blogs" 
+}

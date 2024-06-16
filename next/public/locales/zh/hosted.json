@@ -1,0 +1,44 @@
+{
+  "services": {
+    "lobeChat": {
+      "name": "Lobe Chat",
+      "description": "使用 Lobe Chat 探索语言学习模型（LLM）的世界。访问尖端模型如 GPT-4，Claude Opus，Gemini， Qwen， LLama 和 Yi-Large。使用密码 '8294' 进行访问。"
+    },
+    "chatGPTNextWeb": {
+      "name": "ChatGPT Next Web",
+      "description": "在 ChatGPT Next Web 中探索另一个 LLM 游乐场。体验 GPT-4 和 Gemini 模型的功能。使用密码 '8294' 进行访问。"
+    },
+    "publicS3Bucket": {
+      "name": "我的公共 S3 存储桶",
+      "description": "一个公开访问的 S3 存储桶，包含有用的文件，比如用于绕过防火墙限制的 Clash 工具。"
+    },
+    "vaultwarden": {
+      "name": "Vaultwarden",
+      "description": "使用 Vaultwarden 保护您的数字生活，这是一个自托管的密码管理器，确保您的敏感信息始终在您的控制之下。完全兼容流行的 KeePass 密码管理器。"
+    },
+    "uptimeKuma": {
+      "name": "Uptime Kuma",
+      "description": "使用 Uptime Kuma 监控您个人网站的可用性和性能。及时了解任何问题或停机时间，确保无缝的在线状态。"
+    },
+    "immich": {
+      "name": "Immich",
+      "description": "使用 Immich 保存和重温您珍贵的时刻，这是一个旨在展示您的照片和视频的个人图库。创建美丽的生活视觉时间线。"
+    },
+    "portainer": {
+      "name": "Portainer",
+      "description": "使用 Portainer 简化您的 Docker 容器管理。通过直观的基于 Web 的界面轻松部署、监控和控制您的容器化应用程序。"
+    },
+    "grafana": {
+      "name": "Grafana",
+      "description": "使用 Grafana 可视化和分析您的个人数据。创建令人惊叹的仪表板，深入了解您生活和系统指标的各个方面。"
+    },
+    "prometheus": {
+      "name": "Prometheus",
+      "description": "使用 Prometheus 密切关注您系统的性能。监控关键指标，设置警报，确保您的个人基础设施平稳运行。"
+    },
+    "stash": {
+      "name": "Stash（NSFW）",
+      "description": "使用 Stash 轻松组织和管理您的数字媒体收藏，包括成人内容。请注意，此服务包含可能不适合所有受众的材料。"
+    }
+  }
+}

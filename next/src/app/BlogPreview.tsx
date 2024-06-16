@@ -1,6 +1,7 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import { ChevronDownIcon } from "@heroicons/react/solid";
+import { useTranslation } from "react-i18next";
 
 interface BlogPreview {
   _id: string;
@@ -17,7 +18,7 @@ interface BlogType {
 }
 
 interface BlogPreviewProps {
-  mobile: boolean; // Added mobile prop
+  mobile: boolean;
   newlines?: number;
   fontSize?: string;
   onSelectBlogId: (uuid: string) => void;
@@ -25,10 +26,9 @@ interface BlogPreviewProps {
 
 const BlogPreview: React.FC<BlogPreviewProps> = React.memo(
   ({ mobile, newlines = 4, fontSize = "text-2xl", onSelectBlogId }) => {
+    const { t } = useTranslation("header");
     const [blogPreviews, setBlogPreviews] = useState<BlogType[]>([]);
-    const [openDropdowns, setOpenDropdowns] = useState<{
-      [key: string]: boolean;
-    }>({});
+    const [openDropdowns, setOpenDropdowns] = useState<{ [key: string]: boolean }>({});
     const [error, setError] = useState<string | null>(null);
 
     useEffect(() => {
@@ -70,7 +70,7 @@ const BlogPreview: React.FC<BlogPreviewProps> = React.memo(
         <div className="w-full sticky top-0">
           {renderNewlines()}
           <header className={`${fontSize} font-bold p-4 text-center`}>
-            My Blogs
+            {t("myBlogs")}
           </header>
           <ul className="space-y-4 overflow-x-hidden">
             {blogPreviews.map((blogType) => (

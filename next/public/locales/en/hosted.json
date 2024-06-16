@@ -1,0 +1,44 @@
+{
+  "services": {
+    "lobeChat": {
+      "name": "Lobe Chat",
+      "description": "Explore the world of Language Learning Models (LLMs) with Lobe Chat. Access cutting-edge models like GPT-4, Claude Opus, Gemini, Qwen, LLama, and Yi-Large. Use the code '8294' for access."
+    },
+    "chatGPTNextWeb": {
+      "name": "ChatGPT Next Web",
+      "description": "Dive into another LLM playground with ChatGPT Next Web. Experience the capabilities of GPT-4 and Gemini models. Use the code '8294' for access."
+    },
+    "publicS3Bucket": {
+      "name": "My Public S3 Bucket",
+      "description": "A publicly accessible S3 bucket containing useful files, including the Clash tool for bypassing GFW restrictions."
+    },
+    "vaultwarden": {
+      "name": "Vaultwarden",
+      "description": "Secure your digital life with Vaultwarden, a self-hosted password manager that ensures your sensitive information remains under your control. Fully compatible with the popular KeePass password manager."
+    },
+    "uptimeKuma": {
+      "name": "Uptime Kuma",
+      "description": "Monitor the availability and performance of your personal website with Uptime Kuma. Stay informed about any issues or downtime, ensuring a seamless online presence."
+    },
+    "immich": {
+      "name": "Immich",
+      "description": "Preserve and relive your precious moments with Immich, a personal gallery designed to showcase your photos and videos. Create a beautiful visual timeline of your life."
+    },
+    "portainer": {
+      "name": "Portainer",
+      "description": "Simplify your Docker container management with Portainer. Easily deploy, monitor, and control your containerized applications through an intuitive web-based interface."
+    },
+    "grafana": {
+      "name": "Grafana",
+      "description": "Visualize and analyze your personal data with Grafana. Create stunning dashboards and gain valuable insights into various aspects of your life and system metrics."
+    },
+    "prometheus": {
+      "name": "Prometheus",
+      "description": "Keep a watchful eye on your system's performance with Prometheus. Monitor key metrics, set up alerts, and ensure the smooth operation of your personal infrastructure."
+    },
+    "stash": {
+      "name": "Stash (NSFW)",
+      "description": "Organize and manage your digital media collection, including adult content, with ease using Stash. Please note that this service contains material that may not be suitable for all audiences."
+    }
+  }
+}
