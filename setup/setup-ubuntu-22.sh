@@ -4,9 +4,9 @@ sudo apt install git build-essential npm nginx certbot gnupg curl screen -y
 curl -fsSL https://deb.nodesource.com/setup_22.x | sudo bash -
 sudo apt install nodejs -y
 
-sudo useradd -m ubuntu
-sudo passwd -d ubuntu
-echo 'ubuntu ALL=(ALL) NOPASSWD: ALL' | sudo tee /etc/sudoers.d/ubuntu
+# sudo useradd -m ubuntu
+# sudo passwd -d ubuntu
+# echo 'ubuntu ALL=(ALL) NOPASSWD: ALL' | sudo tee /etc/sudoers.d/ubuntu
 
 curl -fsSL https://www.mongodb.org/static/pgp/server-7.0.asc |
    sudo gpg -o /usr/share/keyrings/mongodb-server-7.0.gpg \
