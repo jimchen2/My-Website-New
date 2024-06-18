@@ -8,9 +8,6 @@ User=ubuntu
 ExecStartPre=/bin/bash -c 'cd /var/www/My-Website && git pull'
 ExecStartPre=/bin/bash -c 'cd /var/www/My-Website/next &&  npm install &&  npm run build:en'
 ExecStartPre=/bin/bash -c 'mongosh --eval "db.blogs.drop()" --db test && mongoimport --db test --collection blogs --file /var/www/My-Website/dump/test/blogs.json'
-ExecStartPre=/bin/bash -c 'cd /var/www/My-Website-zh && git pull'
-ExecStartPre=/bin/bash -c 'cd /var/www/My-Website-zh/next &&  npm install && npm run build:zh'
-ExecStartPre=/bin/bash -c 'mongosh --eval "db.translated_blog.drop()" --db test && mongoimport --db test --collection translated_blog --file /var/www/My-Website/dump/test/translated_blog.json'
 ExecStart=/usr/bin/sudo /bin/systemctl restart my-website.service
 
 [Install]

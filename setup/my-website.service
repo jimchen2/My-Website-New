@@ -5,7 +5,7 @@ After=network.target
 [Service]
 Type=simple
 User=ubuntu
-ExecStart=/bin/bash -c 'cd /var/www/My-Website/next && PORT=2830 /usr/bin/npm start & cd /var/www/My-Website-zh/next && PORT=2831 /usr/bin/npm start'
+ExecStart=/bin/bash -c 'cd /var/www/My-Website/next && PORT=2830 /usr/bin/npm start'
 Restart=on-failure
 
 [Install]
