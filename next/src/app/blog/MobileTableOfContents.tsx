@@ -46,7 +46,7 @@ const TableOfContents: React.FC<TOCProps> = ({ headings }) => {
     event.preventDefault(); // Prevent default anchor behavior
     const element = document.getElementById(id);
     if (element) {
-      const offset = 110; // Adjust this value to the offset you need
+      const offset = 135; // Adjust this value to the offset you need
       const elementPosition = element.getBoundingClientRect().top;
       const offsetPosition = elementPosition + window.scrollY - offset;
 

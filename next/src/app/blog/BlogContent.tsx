@@ -82,7 +82,7 @@ const BlogContent: React.FC<BlogContentProps> = ({
               {type}
             </span>
           </div>
-          <div className="w-1/2 lg:pl-8 right lg:sticky lg:top-20 min-w-[250px] overflow-y-auto">
+          <div className="w-1/2 lg:pl-8 right lg:sticky min-w-[250px]">
             <TableOfContents headings={headings} />
           </div>
         </div>

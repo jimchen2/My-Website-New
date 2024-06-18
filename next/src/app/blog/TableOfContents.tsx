@@ -46,7 +46,7 @@ const TableOfContents: React.FC<TOCProps> = ({ headings }) => {
     event.preventDefault(); // Prevent default anchor behavior
     const element = document.getElementById(id);
     if (element) {
-      const offset = 110; // Adjust this value to the offset you need
+      const offset = 75; // Adjust this value to the offset you need
       const elementPosition = element.getBoundingClientRect().top;
       const offsetPosition = elementPosition + window.scrollY - offset;
 
@@ -77,7 +77,7 @@ const TableOfContents: React.FC<TOCProps> = ({ headings }) => {
   };
 
   return (
-    <div className="blog-toc sticky top-0 overflow-y-auto max-h-screen p-4">
+    <div className="blog-toc sticky top-[75px] overflow-y-auto max-h-screen p-4">
       <h2 className="text-lg font-bold mb-4">{t("Table of Contents")}</h2>
       {renderTree(tree)}
       <br/>

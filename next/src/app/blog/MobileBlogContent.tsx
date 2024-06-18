@@ -12,7 +12,7 @@ interface BlogContentProps {
 
 interface Heading {
   id: string;
-  text: string; // Ensure text is always a string
+  text: string; 
   tagName: string;
 }
 
@@ -21,7 +21,7 @@ function extractHeadings(html: string): Heading[] {
   tmp.innerHTML = html;
   const headings = Array.from(tmp.querySelectorAll("h2")).map((heading) => ({
     id: heading.id,
-    text: heading.textContent || "", // Ensure text is always a string
+    text: heading.textContent || "",
     tagName: heading.tagName,
   }));
   return headings;
