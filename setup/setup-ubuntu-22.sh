@@ -23,7 +23,7 @@ sudo systemctl enable --now nginx
 
 ##################################################################
 
-sudo git clone https://github.com/jimchen2/My-Website-New /var/www/My-Website-zh
+sudo git clone https://github.com/jimchen2/My-Website-New /var/www/My-Website
 sudo chown -R ubuntu:ubuntu /var/www/My-Website
 
 # sudo systemctl stop ufw
