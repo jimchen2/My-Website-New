@@ -25,11 +25,11 @@
       "description": "使用 Immich 保存和重温您珍贵的时刻，这是一个旨在展示您的照片和视频的个人图库。创建美丽的生活视觉时间线。"
     },
     "portainer": {
-      "name": "Portainer",
+      "name": "Portainer  (私人)",
       "description": "使用 Portainer 简化您的 Docker 容器管理。通过直观的基于 Web 的界面轻松部署、监控和控制您的容器化应用程序。"
     },
     "grafana": {
-      "name": "Grafana",
+      "name": "Grafana  (私人)",
       "description": "使用 Grafana 可视化和分析您的个人数据。创建令人惊叹的仪表板，深入了解您生活和系统指标的各个方面。"
     },
     "prometheus": {
@@ -39,6 +39,15 @@
     "stash": {
       "name": "Stash",
       "description": "使用 Stash 轻松组织和管理您的数字媒体收藏。"
+    },
+    "rclone": {
+      "name": "Rclone (私人)",
+      "description": "使用 Rclone 高效地管理和同步多个云存储服务中的文件。使用这个强大的命令行工具简化您的数据管理任务。"
+    },
+    "nextjsTube": {
+      "name": "NextJS Tube",
+      "description": "使用 NextJS Tube 探索视频流体验，提供无缝的媒体传输。享受丰富的用户界面。"
     }
-  }
+  },
+  "Source code available at": "源代码链接"
 }

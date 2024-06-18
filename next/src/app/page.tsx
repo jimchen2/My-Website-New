@@ -14,7 +14,7 @@ const BlogManager: React.FC = () => {
 
   useEffect(() => {
     const handleResize = () => {
-      if (window.innerWidth < 768) {
+      if (window.innerWidth < 800) {
         setMobile(true);
       } else {
         setMobile(false);
@@ -44,7 +44,7 @@ const BlogManager: React.FC = () => {
         </div>
       ) : (
         <div className="flex">
-          <div className="w-[300px] sticky top-0 h-screen overflow-y-auto">
+          <div className="w-[320px] sticky top-0 h-screen overflow-y-auto">
             <BlogPreview
               mobile={mobile}
               newlines={2}

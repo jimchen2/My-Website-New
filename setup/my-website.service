@@ -1,12 +1,12 @@
 [Unit]
-Description=Start Backend
+Description=Start Backend for Multiple Websites
 After=network.target
 
 [Service]
 Type=simple
-User=builduser
-WorkingDirectory=/var/www/My-Website/next
-ExecStart=/usr/bin/npm start
+User=ubuntu
+ExecStart=/bin/bash -c 'cd /var/www/My-Website/next && PORT=2830 /usr/bin/npm start & cd /var/www/My-Website-zh/next && PORT=2831 /usr/bin/npm start'
+Restart=on-failure
 
 [Install]
 WantedBy=multi-user.target

@@ -6,7 +6,7 @@ import { useTranslation } from "react-i18next";
 
 
 const linkStyle =
-  "px-2 py-2 rounded hover:shadow-lg transition-all duration-300 ease-in-out transform hover:-translate-y-1";
+  "px-2 py-2 rounded hover:bg-gray-200 transition-all duration-300 ease-in-out transform hover:-translate-y-1";
 const hoverEffect = {
   hover: { scale: 1.05 },
 };
@@ -28,7 +28,7 @@ const NavLinks: React.FC = () => {
             href={item.href}
             className={`
               ${linkStyle} 
-              text-black hover:text-gray-600 
+              text-black 
               transition duration-300 ease-in-out
             `}
           >

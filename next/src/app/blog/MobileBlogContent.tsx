@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { MathJax, MathJaxContext } from "better-react-mathjax";
-import TableOfContents from "./TableOfContents";
+import TableOfContents from "./MobileTableOfContents";
 import "./blog.css";
 
 interface BlogContentProps {

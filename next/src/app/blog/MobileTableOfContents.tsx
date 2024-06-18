@@ -80,11 +80,6 @@ const TableOfContents: React.FC<TOCProps> = ({ headings }) => {
     <div className="blog-toc sticky top-0 overflow-y-auto max-h-screen p-4">
       <h2 className="text-lg font-bold mb-4">{t("Table of Contents")}</h2>
       {renderTree(tree)}
-      <br/>
-      <br/>
-      <br/>
-      <br/>
-      <br/>
     </div>
   );
 };

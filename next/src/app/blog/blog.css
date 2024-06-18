@@ -15,10 +15,10 @@
   word-break: break-word; /* Ensure long words break */
 }
 
-.scoped-styles p{
-    margin-bottom: 1em;
-    line-height: 1.5;
-  }
+.scoped-styles p {
+  margin-bottom: 1em;
+  line-height: 1.5;
+}
 
 .scoped-styles code {
   font-size: 16px;
@@ -80,7 +80,6 @@
   background-color: #f4f4f4;
 }
 
-
 .scoped-styles .blog-content img {
   max-width: 100%;
   height: auto;
@@ -88,7 +87,7 @@
 }
 
 .scoped-styles .blog-content a {
-  color: #0066cc;
+  color: "black";
   text-decoration: none;
   border-bottom: 2px solid #0066cc;
   transition: color 0.3s ease, border-bottom-color 0.3s ease;
@@ -164,16 +163,23 @@
 }
 
 .scoped-styles li a {
+  background-color: white;
   text-decoration: underline;
-  color: blue;
+  color: black;
   display: inline;
   padding: 0;
   border-radius: 0;
 }
 
 .scoped-styles li a:hover {
-  background-color: transparent;
+  background-color: white;
   text-decoration: underline;
+  color: black;
+  display: inline;
+  padding: 0;
+  border-radius: 0;
+  box-shadow: none;
+  text-shadow: none;
 }
 
 .scoped-styles .code-block {

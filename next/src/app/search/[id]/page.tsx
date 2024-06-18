@@ -33,7 +33,8 @@ const BlogPreview = () => {
       <br />
       <br />
       <br />
-      <ul className="space-y-4 overflow-hidden">
+      <br />
+      <ul className="overflow-hidden">
         {blogPreviews.map((blog) => (
           <PreviewCard key={blog._id} blog={blog} highlightPattern={id} />
         ))}

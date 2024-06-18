@@ -10,7 +10,7 @@ const JimChenWebsite: React.FC = () => {
     <>
       <Link
         href="/"
-        className="text-lg text-gray-800 dark:text-white hover:text-gray-600 dark:hover:text-gray-300 transition-colors duration-300"
+        className="text-lg p-2 hover:bg-gray-200 transition-colors duration-300 block"
       >
         {t("websiteName")}
       </Link>

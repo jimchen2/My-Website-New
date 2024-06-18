@@ -1,8 +1,8 @@
 "use client";
 import { useRouter } from "next/navigation";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useTranslation } from "react-i18next";
-import i18n from "../i18n"; // Import the i18n instance
+import { FaSearch } from "react-icons/fa";
 
 const MobileSearchBar = () => {
   const [query, setQuery] = useState("");
@@ -20,10 +20,10 @@ const MobileSearchBar = () => {
         value={query}
         onChange={(e) => setQuery(e.target.value)}
         placeholder={t("searchPlaceholder")}
-        className="w-full bg-gray-200 py-2 px-4 rounded-full focus:outline-none"
+        className="w-full bg-gray-200 py-2 px-4 rounded-l-full focus:outline-none"
       />
-      <button className="bg-white text-gray-800 border border-gray-300 px-4 py-2 rounded-full">
-        {t("searchButton")}
+      <button type="submit" className="bg-white text-gray-800 ring-2 ring-gray-200 px-4 py-2.5 rounded-r-full flex items-center justify-center">
+        <FaSearch />
       </button>
     </form>
   );

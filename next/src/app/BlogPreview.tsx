@@ -28,7 +28,9 @@ const BlogPreview: React.FC<BlogPreviewProps> = React.memo(
   ({ mobile, newlines = 4, fontSize = "text-2xl", onSelectBlogId }) => {
     const { t } = useTranslation("header");
     const [blogPreviews, setBlogPreviews] = useState<BlogType[]>([]);
-    const [openDropdowns, setOpenDropdowns] = useState<{ [key: string]: boolean }>({});
+    const [openDropdowns, setOpenDropdowns] = useState<{
+      [key: string]: boolean;
+    }>({});
     const [error, setError] = useState<string | null>(null);
 
     useEffect(() => {
@@ -72,42 +74,48 @@ const BlogPreview: React.FC<BlogPreviewProps> = React.memo(
           <header className={`${fontSize} font-bold p-4 text-center`}>
             {t("myBlogs")}
           </header>
-          <ul className="space-y-4 overflow-x-hidden">
+          <ul className="overflow-x-hidden">
             {blogPreviews.map((blogType) => (
-              <li key={blogType.type}>
-                <div className="rounded-lg shadow-lg p-4 transition duration-300 ease-in-out transform">
+              <li key={`${blogType.type}`}>
+                <div className="rounded-lg transition duration-300 ease-in-out transform">
                   <div
-                    className={`flex items-center cursor-pointer justify-between ${
+                    className={`flex items-center space-y-2 text-md cursor-pointer justify-between hover:bg-gray-200 p-3 ${
                       mobile ? "min-w-[320px]" : ""
                     }`}
                     onClick={() => toggleDropdown(blogType.type)}
                   >
-                    <h4 className="font-medium text-gray-800">
+                    <h4 className="font-semibold text-gray-800">
                       {blogType.type} ({blogType.blogs.length})
                     </h4>
                     <ChevronDownIcon
-                      className={`h-5 w-5 text-gray-800 duration-300 ${
+                      className={`h-5 w-5 text-gray-800 duration-300 ease-in-out ${
                         openDropdowns[blogType.type] ? "rotate-180" : "rotate-0"
                       }`}
                     />
                   </div>
-                  {openDropdowns[blogType.type] && (
+                  <div
+                    className={`transition-max-height duration-500 ease-in-out overflow-hidden ${
+                      openDropdowns[blogType.type]
+                        ? "max-h-[500px] opacity-100"
+                        : "max-h-0 opacity-0"
+                    }`}
+                  >
                     <ul className="mt-2 space-y-2">
                       {blogType.blogs.map((blog) => (
                         <li
                           key={blog._id}
-                          className="p-4 rounded-lg transition duration-300 ease-in-out transform hover:bg-gray-200 hover:shadow-lg hover:cursor-pointer"
+                          className="p-2 rounded-lg transition duration-300 ease-in-out transform text-sm hover:bg-gray-200 hover:shadow-lg hover:cursor-pointer"
                           onClick={() => handleSelectBlog(blog.uuid)}
                         >
                           <div className="flex justify-center">
-                            <h6 className="text-black text-center">
+                            <h6 className="text-center text-sm">
                               {blog.title}
                             </h6>
                           </div>
                         </li>
                       ))}
                     </ul>
-                  )}
+                  </div>
                 </div>
               </li>
             ))}

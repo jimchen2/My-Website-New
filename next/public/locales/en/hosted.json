@@ -25,11 +25,11 @@
       "description": "Preserve and relive your precious moments with Immich, a personal gallery designed to showcase your photos and videos. Create a beautiful visual timeline of your life."
     },
     "portainer": {
-      "name": "Portainer",
+      "name": "Portainer (private)",
       "description": "Simplify your Docker container management with Portainer. Easily deploy, monitor, and control your containerized applications through an intuitive web-based interface."
     },
     "grafana": {
-      "name": "Grafana",
+      "name": "Grafana (private)",
       "description": "Visualize and analyze your personal data with Grafana. Create stunning dashboards and gain valuable insights into various aspects of your life and system metrics."
     },
     "prometheus": {
@@ -39,6 +39,15 @@
     "stash": {
       "name": "Stash",
       "description": "Organize and manage your digital media collection with ease using Stash."
+    },
+    "rclone": {
+      "name": "Rclone (private)",
+      "description": "Efficiently manage and synchronize files across multiple cloud storage services with Rclone. Streamline your data management tasks with this powerful command-line tool."
+    },
+    "nextjsTube": {
+      "name": "NextJS Tube",
+      "description": "Explore a video streaming experience with NextJS Tube, a platform built on modern web technologies for seamless media delivery. Enjoy a rich, user-friendly interface."
     }
-  }
+  },
+  "Source code available at": "Source code available at"
 }

@@ -4,5 +4,7 @@
   "websiteName": "Jim Chen's Website",
   "searchPlaceholder": "Search...",
   "searchButton": "Search",
-  "myBlogs": "My Blogs" 
+  "myBlogs": "My Blogs",
+  "mobileselfHostedApps": "Self-hosted",
+  "Table of Contents": "Table of Contents"
 }

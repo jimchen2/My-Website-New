@@ -5,7 +5,6 @@ import { useTranslation } from "react-i18next";
 const Footer = () => {
   const { t } = useTranslation("footer");
 
-
   return (
     <footer className="bg-gray-100 text-gray-800 py-8">
       <div className="container mx-auto px-4 md:px-8 lg:px-16">
@@ -16,7 +15,7 @@ const Footer = () => {
               <li>
                 <a
                   href="mailto:jimchen4214@gmail.com"
-                  className="hover:text-gray-600"
+                  className="hover:underline"
                 >
                   jimchen4214@gmail.com
                 </a>
@@ -26,7 +25,7 @@ const Footer = () => {
                   href="https://jimchen.me/w.JPG"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="hover:text-gray-600"
+                  className="hover:underline"
                 >
                   {t("wechat")}
                 </a>
@@ -41,7 +40,7 @@ const Footer = () => {
                   href="https://github.com/jimchen2"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="hover:text-gray-600"
+                  className="hover:underline"
                 >
                   GitHub
                 </a>
@@ -51,7 +50,7 @@ const Footer = () => {
                   href="https://www.kaggle.com/jc4214"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="hover:text-gray-600"
+                  className="hover:underline"
                 >
                   Kaggle
                 </a>
@@ -65,7 +64,7 @@ const Footer = () => {
             href="https://github.com/jimchen2/My-Website-New"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-sm text-gray-500 hover:text-gray-600"
+            className="text-sm text-gray-500 hover:underline"
           >
             {t("sourceCode")}
           </a>
