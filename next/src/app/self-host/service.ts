@@ -14,7 +14,8 @@ export const services = [
   {
     name: "services.publicS3Bucket.name",
     description: "services.publicS3Bucket.description",
-    link: "https://public.jimchen.me",
+    link: "https://bucket.jimchen.me",
+    repo: "https://github.com/jimchen2/s3-public-index",
   },
   {
     name: "services.vaultwarden.name",
@@ -57,12 +58,6 @@ export const services = [
     description: "services.stash.description",
     link: "https://stash.jimchen.me",
     repo: "https://github.com/stashapp/stash",
-  },
-  {
-    name: "services.rclone.name",
-    description: "services.rclone.description",
-    link: "https://rclone.jimchen.me",
-    repo: "https://github.com/rclone/rclone",
   },
   {
     name: "services.nextjsTube.name",
