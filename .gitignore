@@ -11,7 +11,7 @@
 
 !/dump/markdown_documents/.gitkeep
 
-/next/.env.local
+**/.env.local
 
 /dump/cn_markdown_documents/*
 
