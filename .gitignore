@@ -1,45 +1,36 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
-*package-lock*
-
 # dependencies
-/next/node_modules
-/next/.pnp
-/next.pnp.js
-/next.yarn/install-state.gz
-/dump/markdown_documents/*
-
-!/dump/markdown_documents/.gitkeep
-
-**/.env.local
-
-/dump/cn_markdown_documents/*
-
-!/dump/cn_markdown_documents/.gitkeep
+/node_modules
+/.pnp
+.pnp.js
+.yarn/install-state.gz
 
 # testing
-/next/coverage
-/next/package-lock.json
+/coverage
 
 # next.js
-/next/.next/
-/next/out/
+/.next/
+/out/
 
 # production
-/next/build
+/build
 
 # misc
-/next/next.DS_Store
-/next/next*.pem
+.DS_Store
+*.pem
 
 # debug
-/next/nextnpm-debug.log*
-/next/nextyarn-debug.log*
-/next/nextyarn-error.log*
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# local env files
+.env*.local
 
 # vercel
-/next/next.vercel
+.vercel
 
 # typescript
-/next/next*.tsbuildinfo
-/next/nextnext-env.d.ts
+*.tsbuildinfo
+next-env.d.ts
