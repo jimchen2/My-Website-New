@@ -1,6 +1,10 @@
 "use client";
 import React from "react";
 import { useTranslation } from "react-i18next";
+import { FaGithub, FaDocker, FaReddit } from 'react-icons/fa';
+import { SiKaggle } from 'react-icons/si';
+import { MdEmail } from 'react-icons/md';
+import { RiWechatFill } from 'react-icons/ri';
 
 const Footer = () => {
   const { t } = useTranslation("footer");
@@ -10,32 +14,10 @@ const Footer = () => {
       <div className="container mx-auto px-4 md:px-8 lg:px-16">
         <div className="flex flex-wrap justify-between">
           <div className="w-full md:w-1/2 mb-4 md:mb-0">
-            <h3 className="text-lg font-bold mb-2">{t("contact")}</h3>
-            <ul className="text-sm">
-              <li>
-                <a
-                  href="mailto:jimchen4214@gmail.com"
-                  className="hover:underline"
-                >
-                  jimchen4214@gmail.com
-                </a>
-              </li>
-              <li>
-                <a
-                  href="https://jimchen.me/w.JPG"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="hover:underline"
-                >
-                  {t("wechat")}
-                </a>
-              </li>
-            </ul>
-          </div>
-          <div className="w-full md:w-1/2 mb-4 md:mb-0">
             <h3 className="text-lg font-bold mb-2">{t("tech")}</h3>
             <ul className="text-sm">
-              <li>
+              <li className="flex items-center mb-2">
+                <FaGithub className="mr-2" />
                 <a
                   href="https://github.com/jimchen2"
                   target="_blank"
@@ -45,7 +27,8 @@ const Footer = () => {
                   GitHub
                 </a>
               </li>
-              <li>
+              <li className="flex items-center mb-2">
+                <SiKaggle className="mr-2" />
                 <a
                   href="https://www.kaggle.com/jc4214"
                   target="_blank"
@@ -53,6 +36,53 @@ const Footer = () => {
                   className="hover:underline"
                 >
                   Kaggle
+                </a>
+              </li>
+              <li className="flex items-center">
+                <FaDocker className="mr-2" />
+                <a
+                  href="https://hub.docker.com/u/jimchen2"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:underline"
+                >
+                  Docker Hub
+                </a>
+              </li>
+            </ul>
+          </div>
+          <div className="w-full md:w-1/2 mb-4 md:mb-0">
+            <h3 className="text-lg font-bold mb-2">{t("social")}</h3>
+            <ul className="text-sm">
+              <li className="flex items-center mb-2">
+                <MdEmail className="mr-2" />
+                <a
+                  href="mailto:jimchen4214@gmail.com"
+                  className="hover:underline"
+                >
+                  jimchen4214@gmail.com
+                </a>
+              </li>
+              <li className="flex items-center mb-2">
+                <RiWechatFill className="mr-2" />
+                <a
+                  href="https://jimchen.me/w.JPG"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:underline"
+                >
+                  {t("wechat")}
+                </a>
+              </li>
+              <li className="flex items-center">
+                <FaReddit className="mr-2" />
+                <a
+                  href="https://www.reddit.com/user/jimchen4214/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:underline"
+                >
+                  Reddit
                 </a>
               </li>
             </ul>
