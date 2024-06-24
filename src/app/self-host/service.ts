@@ -1,5 +1,24 @@
 export const services = [
   {
+    name: "services.nextjsTube.name",
+    description: "services.nextjsTube.description",
+    link: "https://tube.jimchen.me",
+    repo: "https://github.com/jimchen2/nextjs-tube",
+  },
+  {
+    name: "services.publicS3Bucket.name",
+    description: "services.publicS3Bucket.description",
+    link: "https://bucket.jimchen.me",
+    repo: "https://github.com/jimchen2/s3-public-index",
+  },
+  {
+    name: "services.taskManager.name",
+    description: "services.taskManager.description",
+    link: "https://task.jimchen.me",
+    repo: "https://github.com/jimchen2/task-manager-nextjs",
+  },
+
+  {
     name: "services.lobeChat.name",
     description: "services.lobeChat.description",
     link: "https://lobe.jimchen.me",
@@ -11,12 +30,7 @@ export const services = [
     link: "https://chat.jimchen.me",
     repo: "https://github.com/ChatGPTNextWeb/ChatGPT-Next-Web",
   },
-  {
-    name: "services.publicS3Bucket.name",
-    description: "services.publicS3Bucket.description",
-    link: "https://bucket.jimchen.me",
-    repo: "https://github.com/jimchen2/s3-public-index",
-  },
+
   {
     name: "services.vaultwarden.name",
     description: "services.vaultwarden.description",
@@ -58,11 +72,5 @@ export const services = [
     description: "services.stash.description",
     link: "https://stash.jimchen.me",
     repo: "https://github.com/stashapp/stash",
-  },
-  {
-    name: "services.nextjsTube.name",
-    description: "services.nextjsTube.description",
-    link: "https://tube.jimchen.me",
-    repo: "https://github.com/jimchen2/nextjs-tube",
   },
 ];
