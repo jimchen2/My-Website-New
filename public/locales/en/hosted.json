@@ -44,13 +44,21 @@
       "name": "Rclone (private)",
       "description": "Efficiently manage and synchronize files across multiple cloud storage services with Rclone. Streamline your data management tasks with this powerful command-line tool."
     },
-    "nextjsTube": {
-      "name": "NextJS Tube (Canary)",
-      "description": "Explore a video streaming experience with NextJS Tube, a platform built on modern web technologies for seamless media delivery. Enjoy a rich, user-friendly interface."
-    },
     "taskManager": {
       "name": "Task Manager (private)",
       "description": "A password-protected Progressive Web App for daily task management with MongoDB integration, automatic task rollover, and tag management."
+    },
+    "nocodb": {
+      "name": "NocoDB",
+      "description": "An open-source Airtable alternative that turns any database into a smart spreadsheet."
+    },
+    "actual": {
+      "name": "Actual (private)",
+      "description": "A personal finance tool that helps you budget, track expenses, and manage your money effectively."
+    },
+    "monica": {
+      "name": "Monica (private)",
+      "description": "A personal CRM to help you organize your relationships and stay in touch with important people in your life."
     }
   },
   "Source code available at": "Source code available at"
