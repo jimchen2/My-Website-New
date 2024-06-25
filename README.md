@@ -9,6 +9,6 @@ docker run -d --restart always --env-file .env -p 3010:3000 jimchen2/my-website:
 
 ```sh
 # add Dockerfile
-docker build -t jimchen2/my-website:latest .
+docker build --no-cache -t jimchen2/my-website:latest .
 ```
 
