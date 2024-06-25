@@ -48,6 +48,10 @@
       "name": "个人任务管理（私人）",
       "description": "使用 NextJS 构建的密码保护任务管理。集成 MongoDB 数据库，支持每日任务管理、自动任务复制。"
     },
+    "markdownParser": {
+      "name": "Markdown Parser",
+      "description": "为基于网络的笔记应用将 Markdown 转换为 HTML，使用 NextJS 构建管理个人笔记，与 MongoDB 集成以实现高效的笔记存储和检索。"
+    },
     "nocodb": {
       "name": "NocoDB",
       "description": "一个开源的 Airtable 替代品，可以将任何数据库转换为智能电子表格。"

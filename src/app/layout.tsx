@@ -21,6 +21,8 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
           />
           <title>Jim Chen&apos;s Website</title>
           <link rel="icon" href="/favicon.ico" />
+          <link rel="manifest" href="/manifest.json" />
+          <meta name="theme-color" content="#000000" />
         </head>
         <body className="flex flex-col min-h-screen">
           <Navbar />

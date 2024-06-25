@@ -48,6 +48,10 @@
       "name": "Task Manager (private)",
       "description": "A password-protected Progressive Web App for daily task management with MongoDB integration, automatic task rollover, and tag management."
     },
+    "markdownParser": {
+      "name": "Markdown Parser",
+      "description": "Converts Markdown to HTML for web-based note-taking. Supports standard Markdown and extended syntax, integrating with MongoDB for efficient note storage and retrieval."
+    },
     "nocodb": {
       "name": "NocoDB",
       "description": "An open-source Airtable alternative that turns any database into a smart spreadsheet."

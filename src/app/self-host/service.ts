@@ -67,6 +67,12 @@ export const services = [
     repo: "https://github.com/jimchen2/task-manager-nextjs",
   },
   {
+    name: "services.markdownParser.name",
+    description: "services.markdownParser.description",
+    link: "https://markdown.jimchen.me",
+    repo: "https://github.com/jimchen2/markdown-parser",
+  },
+  {
     name: "services.nocodb.name",
     description: "services.nocodb.description",
     link: "https://nocodb.jimchen.me",
