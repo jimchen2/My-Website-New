@@ -2,9 +2,10 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
 import { FaGithub, FaDocker, FaReddit } from 'react-icons/fa';
-import { SiKaggle } from 'react-icons/si';
+import { SiKaggle, SiTencentqq } from 'react-icons/si';
 import { MdEmail } from 'react-icons/md';
 import { RiWechatFill } from 'react-icons/ri';
+import Image from 'next/image';
 
 const Footer = () => {
   const { t } = useTranslation("footer");
@@ -38,7 +39,7 @@ const Footer = () => {
                   Kaggle
                 </a>
               </li>
-              <li className="flex items-center">
+              <li className="flex items-center mb-2">
                 <FaDocker className="mr-2" />
                 <a
                   href="https://hub.docker.com/u/jimchen2"
@@ -47,6 +48,23 @@ const Footer = () => {
                   className="hover:underline"
                 >
                   Docker Hub
+                </a>
+              </li>
+              <li className="flex items-center grayscale">
+                <Image
+                  src="/huggingface-2.svg"
+                  alt="Hugging Face"
+                  width={16}
+                  height={16}
+                  className="mr-2"
+                />
+                <a
+                  href="https://huggingface.co/jimchen2"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:underline"
+                >
+                  Hugging Face
                 </a>
               </li>
             </ul>
@@ -72,6 +90,17 @@ const Footer = () => {
                   className="hover:underline"
                 >
                   {t("wechat")}
+                </a>
+              </li>
+              <li className="flex items-center mb-2">
+                <SiTencentqq className="mr-2" />
+                <a
+                  href="/qq.jpg"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:underline"
+                >
+                  QQ
                 </a>
               </li>
               <li className="flex items-center">
