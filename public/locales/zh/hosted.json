@@ -10,7 +10,7 @@
     },
     "publicS3Bucket": {
       "name": "我的公共 S3 存储桶",
-      "description": "一个公开访问的 S3 存储桶，包含有用的文件，比如用于绕过防火墙限制的 Clash 工具。"
+      "description": "一个支持多存储的文件列表/WebDAV程序，使用 Gin 和 Solidjs。"
     },
     "vaultwarden": {
       "name": "Vaultwarden",

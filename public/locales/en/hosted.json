@@ -10,7 +10,7 @@
     },
     "publicS3Bucket": {
       "name": "My Public S3 Bucket",
-      "description": "A publicly accessible S3 bucket containing useful files, including the Clash tool for bypassing GFW restrictions."
+      "description": "A file list/WebDAV program that supports multiple storages, powered by Gin and Solidjs."
     },
     "vaultwarden": {
       "name": "Vaultwarden",

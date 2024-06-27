@@ -58,7 +58,7 @@ export const services = [
     name: "services.publicS3Bucket.name",
     description: "services.publicS3Bucket.description",
     link: "https://bucket.jimchen.me",
-    repo: "https://github.com/jimchen2/s3-public-index",
+    repo: "https://github.com/alist-org/alist",
   },
   {
     name: "services.taskManager.name",
