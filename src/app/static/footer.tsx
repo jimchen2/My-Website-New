@@ -1,11 +1,13 @@
 "use client";
 import React from "react";
 import { useTranslation } from "react-i18next";
-import { FaGithub, FaDocker, FaReddit } from 'react-icons/fa';
-import { SiKaggle, SiTencentqq } from 'react-icons/si';
-import { MdEmail } from 'react-icons/md';
-import { RiWechatFill } from 'react-icons/ri';
-import Image from 'next/image';
+import { FaGithub, FaDocker, FaReddit } from "react-icons/fa";
+import { SiKaggle, SiTencentqq } from "react-icons/si";
+import { MdEmail } from "react-icons/md";
+import { RiWechatFill } from "react-icons/ri";
+import Image from "next/image";
+import { FaRss } from "react-icons/fa";
+import Link from "next/link";
 
 const Footer = () => {
   const { t } = useTranslation("footer");
@@ -104,15 +106,16 @@ const Footer = () => {
                 </a>
               </li>
               <li className="flex items-center">
-                <FaReddit className="mr-2" />
-                <a
-                  href="https://www.reddit.com/user/jimchen4214/"
+                <FaRss className="mr-2" />
+                <Link
+                  href="/api/rss"
+                  passHref
                   target="_blank"
                   rel="noopener noreferrer"
                   className="hover:underline"
                 >
-                  Reddit
-                </a>
+                  RSS Feed
+                </Link>
               </li>
             </ul>
           </div>
