@@ -1,3 +1,8 @@
+## ToDo
+
+1. Integrate with [markdown-parser](https://github.com/jimchen2/markdown-parser) for syncing
+2. Remove the Chinese translation(they are stupid and super bloated)
+
 ## Install
 
 ```sh
