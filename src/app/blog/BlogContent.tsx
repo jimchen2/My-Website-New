@@ -32,6 +32,15 @@ function extractHeadings(html: string): Heading[] {
 const BlogContent: React.FC<BlogContentProps> = ({ title, type, date, body }) => {
   const [headings, setHeadings] = useState<Heading[]>([]);
   const contentRef = useRef<HTMLDivElement>(null);
+  const [copied, setCopied] = useState(false);
+
+  const blogLink = `http://localhost:3000/?title=${encodeURIComponent(title)}`;
+
+  const copyLink = () => {
+    navigator.clipboard.writeText(blogLink);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  };
 
   useEffect(() => {
     const renderLatex = (html: string) => {
@@ -55,7 +64,6 @@ const BlogContent: React.FC<BlogContentProps> = ({ title, type, date, body }) =>
 
       return processedHtml.replace(/__CODE_BLOCK_(\d+)__/g, (_, index) => codeBlocks[parseInt(index)]);
     };
-
 
     const renderMarkdown = () => {
       if (contentRef.current) {
@@ -103,7 +111,15 @@ const BlogContent: React.FC<BlogContentProps> = ({ title, type, date, body }) =>
           <br />
           <br />
 
-          <h1 className="text-3xl font-bold mb-4">{title}</h1>
+          <div className="flex items-center justify-between mb-4">
+            <h1 className="text-3xl font-bold">{title}</h1>
+            <button
+              onClick={copyLink}
+              className="ml-4 px-3 py-1 bg-gray-200 text-black rounded hover:bg-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-opacity-50"
+            >
+              {copied ? "Copied!" : "Copy Link"}
+            </button>
+          </div>
           <div className="mt-4">
             <p className="text-sm text-gray-500 mb-4">{date.toLocaleDateString()}</p>
           </div>

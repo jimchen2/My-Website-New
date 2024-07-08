@@ -1,11 +1,3 @@
-## ToDo
-
-1. Integrate with [markdown-parser](https://github.com/jimchen2/markdown-parser) for syncing
-2. Remove the Chinese translation(they are stupid and super bloated)
-3. Change the Header to About/Blog/LinkTree, LinkTree embed, then remove footer
-4. Improve RSS feed
-5. Redirect on blog url back to the original url
-
 ## Install
 
 ```sh

@@ -2,23 +2,19 @@
 import React, { useEffect, useState } from "react";
 import BlogFetch from "./blog/BlogFetch";
 import BlogPreview from "./BlogPreview";
-import { useSearchParams } from "next/navigation";
+import { useSearchParams, useRouter } from "next/navigation";
 
 const BlogManager: React.FC = () => {
   const [mobile, setMobile] = useState(false);
-
+  const router = useRouter();
   const params = useSearchParams();
   const title = params.get("title");
 
-  const [selectedBlogTitle, setSelectedBlogTitle] = useState(title || "");
+  const [selectedBlogTitle, setSelectedBlogTitle] = useState("");
 
   useEffect(() => {
     const handleResize = () => {
-      if (window.innerWidth < 800) {
-        setMobile(true);
-      } else {
-        setMobile(false);
-      }
+      setMobile(window.innerWidth < 800);
     };
     window.addEventListener("resize", handleResize);
     handleResize();
@@ -30,8 +26,10 @@ const BlogManager: React.FC = () => {
   useEffect(() => {
     if (title) {
       setSelectedBlogTitle(title);
+      // Redirect to the base URL
+      router.replace("/", undefined, { shallow: true });
     }
-  }, [title]);
+  }, [title, router]);
 
   const handleSelectBlogId = (title: string) => {
     setSelectedBlogTitle(title);

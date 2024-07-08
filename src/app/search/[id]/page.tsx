@@ -21,7 +21,7 @@ const BlogPreview = () => {
 
   useEffect(() => {
     const fetchDocumentSnippets = async () => {
-      const res = await fetch(`/api/searchBlog${query ? `?query=${encodeURIComponent(query)}` : ''}`);
+      const res = await fetch(`/api/searchBlog${query ? `?query=${query}` : ""}`);
       if (!res.ok) {
         throw new Error(`HTTP error! status: ${res.status}`);
       }
