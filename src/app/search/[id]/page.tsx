@@ -9,7 +9,6 @@ interface DocumentSnippet {
   date: string;
   type: string;
   body: string;
-  access: 1 | 2 | 3;
   isTitleMatch: boolean;
   isBodyMatch: boolean;
 }
@@ -22,7 +21,7 @@ const BlogPreview = () => {
 
   useEffect(() => {
     const fetchDocumentSnippets = async () => {
-      const res = await fetch(`/api/searchBlog?query=${query}`);
+      const res = await fetch(`/api/searchBlog${query ? `?query=${encodeURIComponent(query)}` : ''}`);
       if (!res.ok) {
         throw new Error(`HTTP error! status: ${res.status}`);
       }
