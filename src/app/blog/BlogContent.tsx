@@ -34,7 +34,7 @@ const BlogContent: React.FC<BlogContentProps> = ({ title, type, date, body }) =>
   const contentRef = useRef<HTMLDivElement>(null);
   const [copied, setCopied] = useState(false);
 
-  const blogLink = `http://localhost:3000/?title=${encodeURIComponent(title)}`;
+  const blogLink = `https://jimchen.me?title=${encodeURIComponent(title)}`;
 
   const copyLink = () => {
     navigator.clipboard.writeText(blogLink);
