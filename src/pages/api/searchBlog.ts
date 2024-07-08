@@ -4,7 +4,7 @@ import Document from "../../models/document.model";
 
 interface DocumentSnippet {
   title: string;
-  date: string;
+  date: Date;
   type: string;
   body: string;
   access: 1;
