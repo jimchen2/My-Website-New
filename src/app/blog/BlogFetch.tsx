@@ -62,7 +62,7 @@ const BlogFetch: React.FC<BlogPostProps> = ({ mobile, title, type }) => {
   return (
     <div>
       {mobile ? (
-        <BlogContent title={post.title} type={post.type} date={post.date} body={post.body} />
+        <MobileBlogContent title={post.title} type={post.type} date={post.date} body={post.body} />
       ) : (
         <BlogContent title={post.title} type={post.type} date={post.date} body={post.body} />
       )}

@@ -32,8 +32,7 @@ const PreviewCard: React.FC<PreviewCardProps> = ({
   document,
   highlightPattern,
 }) => {
-  const formattedTitle = document.title.toLowerCase().replace(/\s+/g, '-');
-  const linkHref = `/${document.type}/${formattedTitle}`;
+  const linkHref = `/?title=${document.title}`;
 
   return (
     <li className="shadow-lg rounded-lg p-6 max-w-screen-lg mx-auto transition hover:bg-gray-200">
@@ -43,10 +42,12 @@ const PreviewCard: React.FC<PreviewCardProps> = ({
             {highlight(document.title, highlightPattern)}
           </span>
         </Link>
-        <span className="text-sm bg-gray-200 px-2 py-1 rounded">{document.type}</span>
+        <span className="text-sm bg-gray-200 px-2 py-1 rounded">
+          {highlight(document.type, highlightPattern)}
+        </span>
       </h2>
       <p className="text-gray-500 text-sm font-mono">
-        {new Date(document.date).toLocaleDateString()}
+        {highlight(new Date(document.date).toLocaleDateString(), highlightPattern)}
       </p>
       <p className="mt-4 text-gray-700 break-words font-sans">
         {highlight(document.body, highlightPattern)}

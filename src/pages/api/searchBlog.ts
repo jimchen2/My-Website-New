@@ -30,12 +30,18 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
           access: 1,
           $or: [
             { title: regex },
-            { body: regex }
+            { body: regex },
+            { type: regex },
+            { date: { $regex: regex } }
           ]
         }).sort({ date: -1 }).lean().exec();
 
         documents = documents.map((doc) => {
           const isTitleMatch = regex.test(doc.title);
+          const isTypeMatch = regex.test(doc.type);
+          const isDateMatch = regex.test(doc.date.toString());
+          const isBodyMatch = regex.test(doc.body);
+          
           const snippet = getRelevantSnippet(doc.body, query, isTitleMatch);
 
           return {
@@ -44,7 +50,9 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
             type: doc.type,
             body: snippet,
             isTitleMatch,
-            isBodyMatch: !isTitleMatch,
+            isTypeMatch,
+            isDateMatch,
+            isBodyMatch,
           };
         });
       } else {

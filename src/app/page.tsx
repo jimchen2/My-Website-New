@@ -8,9 +8,9 @@ const BlogManager: React.FC = () => {
   const [mobile, setMobile] = useState(false);
 
   const params = useSearchParams();
-  const id = params.get("blog");
+  const title = params.get("title");
 
-  const [selectedBlogTitle, setSelectedBlogTitle] = useState(id);
+  const [selectedBlogTitle, setSelectedBlogTitle] = useState(title || "");
 
   useEffect(() => {
     const handleResize = () => {
@@ -26,6 +26,12 @@ const BlogManager: React.FC = () => {
       window.removeEventListener("resize", handleResize);
     };
   }, []);
+
+  useEffect(() => {
+    if (title) {
+      setSelectedBlogTitle(title);
+    }
+  }, [title]);
 
   const handleSelectBlogId = (title: string) => {
     setSelectedBlogTitle(title);

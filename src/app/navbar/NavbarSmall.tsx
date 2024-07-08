@@ -2,12 +2,13 @@ import React, { useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { motion } from "framer-motion";
+import { HiSearch, HiX } from "react-icons/hi";
 
 const NavLinks: React.FC = () => (
   <div className="flex items-center space-x-4">
     <motion.div whileHover={{ scale: 1.05 }}>
-      <Link href="/" className="text-lg p-2 hover:bg-gray-200 transition-colors duration-300">
-        Home
+      <Link href="/search/2024" className="text-lg p-2 hover:bg-gray-200 transition-colors duration-300">
+      Jim Chen's Blog
       </Link>
     </motion.div>
     <motion.div whileHover={{ scale: 1.05 }}>
@@ -38,14 +39,14 @@ const SearchForm: React.FC<SearchFormProps> = ({ searchQuery, setSearchQuery, ha
       type="submit"
       className="h-10 rounded-r-full bg-white px-4 py-2 text-gray-800 ring-2 ring-gray-200 hover:bg-gray-200"
     >
-      Search
+      <HiSearch className="w-5 h-5" />
     </button>
     <button
       type="button"
       onClick={() => setIsSearchOpen(false)}
       className="ml-2 p-2 hover:bg-gray-200 rounded-full"
     >
-      ✖
+      <HiX className="w-5 h-5" />
     </button>
   </form>
 );
@@ -80,7 +81,7 @@ const NavbarSmall: React.FC = () => {
                 onClick={() => setIsSearchOpen(true)}
                 className="p-2 hover:bg-gray-200 rounded-full"
               >
-                🔍
+                <HiSearch className="w-6 h-6" />
               </button>
             )}
           </div>
