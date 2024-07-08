@@ -10,8 +10,8 @@ const Navbar: React.FC = () => {
       setIsLargeScreen(window.innerWidth >= 768);
     };
     checkScreenSize();
-    window.addEventListener('resize', checkScreenSize);
-    return () => window.removeEventListener('resize', checkScreenSize);
+    window.addEventListener("resize", checkScreenSize);
+    return () => window.removeEventListener("resize", checkScreenSize);
   }, []);
 
   return isLargeScreen ? <NavbarLarge /> : <NavbarSmall />;

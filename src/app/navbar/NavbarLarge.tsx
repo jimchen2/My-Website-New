@@ -3,11 +3,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { motion } from "framer-motion";
 
-const NavBrand: React.FC = () => (
-  <div className="text-lg p-2 hover:bg-gray-200 transition-colors duration-300 cursor-pointer">
-    Jim Chen's Blog
-  </div>
-);
+const NavBrand: React.FC = () => <div className="text-lg p-2 hover:bg-gray-200 transition-colors duration-300 cursor-pointer">Jim Chen's Blog</div>;
 
 const NavLinks: React.FC = () => (
   <div className="flex items-center">
@@ -34,10 +30,7 @@ const SearchForm: React.FC<SearchFormProps> = ({ searchQuery, setSearchQuery, ha
       value={searchQuery}
       onChange={(e) => setSearchQuery(e.target.value)}
     />
-    <button
-      type="submit"
-      className="h-10 rounded-r-full bg-white px-4 py-2 text-gray-800 ring-2 ring-gray-200 hover:bg-gray-200"
-    >
+    <button type="submit" className="h-10 rounded-r-full bg-white px-4 py-2 text-gray-800 ring-2 ring-gray-200 hover:bg-gray-200">
       Search
     </button>
   </form>
@@ -55,7 +48,7 @@ const NavbarLarge: React.FC = () => {
   };
 
   return (
-    <header className="fixed top-0 z-50 w-full bg-white shadow-md">
+    <header className="fixed top-0 z-50 w-full bg-white shadow-md font-quicksand font-bold">
       <nav className="container mx-auto px-4 py-3">
         <div className="flex items-center justify-between">
           <div className="flex items-center space-x-4">
@@ -63,11 +56,7 @@ const NavbarLarge: React.FC = () => {
             <NavLinks />
           </div>
           <div className="flex items-center">
-            <SearchForm 
-              searchQuery={searchQuery} 
-              setSearchQuery={setSearchQuery} 
-              handleSearch={handleSearch}
-            />
+            <SearchForm searchQuery={searchQuery} setSearchQuery={setSearchQuery} handleSearch={handleSearch} />
           </div>
         </div>
       </nav>

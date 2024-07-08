@@ -5,9 +5,11 @@ const config: Config = {
   theme: {
     extend: {
       fontFamily: {
-        body: ["HarmonyOS Sans", "Segoe UI", "SF Pro Display", "-apple-system", "BlinkMacSystemFont", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Open Sans", "Helvetica Neue", "sans-serif"],
-        code: ["Hack", "ui-monospace", "SFMono-Regular", "SF Mono", "Menlo", "Consolas", "Liberation Mono", "monospace"],
-        mono: ["SFMono-Regular", "Consolas", "Liberation Mono", "Menlo", "Courier", "monospace"],
+        kalam: ["Kalam", "cursive"],
+        caveat: ["Caveat", "cursive"],
+        indieFlower: ["Indie Flower", "cursive"],
+        quicksand: ["quicksand", "cursive"],
+        comicsans: ["Comic Sans MS", "cursive"],
       },
     },
   },

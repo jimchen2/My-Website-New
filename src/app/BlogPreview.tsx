@@ -65,10 +65,10 @@ const BlogPreview: React.FC<BlogPreviewProps> = ({
   };
 
   return (
-    <div className="flex flex-col md:flex-row gap-4 p-4">
+    <div className="flex flex-col md:flex-row gap-4 p-4 font-comicsans">
       <div className="w-full sticky top-0">
         {renderNewlines()}
-        <header className={`${fontSize} font-bold p-4 text-center`}>
+        <header className={`${fontSize} font-light p-4 text-center`}>
           My Blogs
         </header>
         <ul className="overflow-x-hidden">
@@ -81,7 +81,7 @@ const BlogPreview: React.FC<BlogPreviewProps> = ({
                   }`}
                   onClick={() => toggleDropdown(docType.type)}
                 >
-                  <h4 className="font-semibold text-gray-800">
+                  <h4 className="font-thin text-gray-800">
                     {docType.type} ({docType.documents.length})
                   </h4>
                   <ChevronDownIcon
@@ -105,7 +105,7 @@ const BlogPreview: React.FC<BlogPreviewProps> = ({
                         onClick={() => handleSelectDocument(doc.title)}
                       >
                         <div className="flex justify-center">
-                          <h6 className="text-center text-sm">
+                          <h6 className="text-center text-sm font-light">
                             {doc.title}
                           </h6>
                         </div>
