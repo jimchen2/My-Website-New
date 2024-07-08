@@ -7,7 +7,7 @@ interface DocumentSnippet {
   date: string;
   type: string;
   body: string;
-  access: 1 | 2 | 3;
+  access: 1;
   isTitleMatch: boolean;
   isBodyMatch: boolean;
 }
@@ -38,7 +38,7 @@ export default async function handler(
   await dbConnect();
 
   if (req.method === "GET") {
-    const { query, access } = req.query;
+    const { query } = req.query;
 
     try {
       let documents;
@@ -47,7 +47,7 @@ export default async function handler(
         const escapedQuery = escapeRegex(query);
         const regex = new RegExp(escapedQuery, "i");
 
-        documents = await Document.find();
+        documents = await Document.find({ access: 1 });
         documents = documents
           .map((doc) => {
             const isTitleMatch = regex.test(doc.title);
@@ -66,13 +66,7 @@ export default async function handler(
           })
           .filter((doc) => doc.isTitleMatch || doc.isBodyMatch);
       } else {
-        documents = await Document.find();
-      }
-
-      // Filter by access level if provided
-      if (access && typeof access === "string") {
-        const accessLevel = parseInt(access);
-        documents = documents.filter((doc) => doc.access <= accessLevel);
+        documents = await Document.find({ access: 1 });
       }
 
       // Sort documents by date in descending order

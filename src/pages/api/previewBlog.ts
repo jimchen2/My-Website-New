@@ -20,8 +20,7 @@ export default async function handler(
 
   if (req.method === "GET") {
     try {
-      // Fetch all documents
-      const documents = await Document.find({}, 'title date type access');
+      const documents = await Document.find({ access: 1 }, 'title date type');
 
       // Group documents by type
       const documentsByType: DocumentsByType = documents.reduce((acc: DocumentsByType, doc) => {

@@ -1,7 +1,6 @@
 "use client";
 import React, { ReactNode } from "react";
-import Navbar from "./static/navbar";
-import Footer from "./static/footer";
+import Navbar from "./navbar/navbar";
 import "./globals.css";
 
 interface LayoutProps {
@@ -26,7 +25,6 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
         <body className="flex flex-col min-h-screen">
           <Navbar />
           <main className="flex-grow">{children}</main>
-          <Footer />
         </body>
       </html>
     </>

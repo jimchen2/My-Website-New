@@ -6,13 +6,13 @@ import "./blog.css";
 interface BlogContentProps {
   title: string;
   type: string;
-  date: string;
+  date: Date;  // Changed to Date type
   body: string;
 }
 
 interface Heading {
   id: string;
-  text: string; // Ensure text is always a string
+  text: string;
   tagName: string;
 }
 
@@ -21,7 +21,7 @@ function extractHeadings(html: string): Heading[] {
   tmp.innerHTML = html;
   const headings = Array.from(tmp.querySelectorAll("h2")).map((heading) => ({
     id: heading.id,
-    text: heading.textContent || "", // Ensure text is always a string
+    text: heading.textContent || "",
     tagName: heading.tagName,
   }));
   return headings;
@@ -36,7 +36,6 @@ const BlogContent: React.FC<BlogContentProps> = ({
   const [headings, setHeadings] = useState<Heading[]>([]);
 
   useEffect(() => {
-    // Scroll to the hash if present
     if (window.location.hash) {
       const elementId = window.location.hash.substring(1).toLowerCase();
       const element = document.getElementById(elementId);
@@ -44,11 +43,10 @@ const BlogContent: React.FC<BlogContentProps> = ({
         element.scrollIntoView();
         setTimeout(() => {
           window.scrollBy(0, -35);
-        }, 100); // Adjust the delay as needed
+        }, 100);
       }
     }
 
-    // Extract headings
     setHeadings(extractHeadings(body));
   }, [body]);
 
@@ -64,7 +62,7 @@ const BlogContent: React.FC<BlogContentProps> = ({
             <h1 className="text-3xl font-bold mb-4">{title}</h1>
             <div className="mt-4">
               <p className="text-sm text-gray-500 mb-4">
-                {new Date(date).toLocaleDateString()}
+                {date.toLocaleDateString()}  {/* Using Date object directly */}
               </p>
             </div>
             <div className="prose lg:prose-xl break-words">

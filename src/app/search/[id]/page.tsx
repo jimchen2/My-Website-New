@@ -4,29 +4,34 @@ import { useParams } from "next/navigation";
 import React, { useEffect, useState } from "react";
 import PreviewCard from "./PreviewCard";
 
-interface BlogPreview {
-  _id: string;
+interface DocumentSnippet {
   title: string;
   date: string;
-  body: string;
   type: string;
+  body: string;
+  access: 1 | 2 | 3;
+  isTitleMatch: boolean;
+  isBodyMatch: boolean;
 }
 
 const BlogPreview = () => {
   const params = useParams();
-  const id = params?.id as string;
+  const query = params?.query as string;
 
-  const [blogPreviews, setBlogPreviews] = useState<BlogPreview[]>([]);
+  const [documentSnippets, setDocumentSnippets] = useState<DocumentSnippet[]>([]);
 
   useEffect(() => {
-    const fetchBlogPreviews = async () => {
-      const res = await fetch(`/api/searchBlog?query=${id}`);
-      const data: BlogPreview[] = await res.json();
-      setBlogPreviews(data);
+    const fetchDocumentSnippets = async () => {
+      const res = await fetch(`/api/searchBlog?query=${query}`);
+      if (!res.ok) {
+        throw new Error(`HTTP error! status: ${res.status}`);
+      }
+      const data: DocumentSnippet[] = await res.json();
+      setDocumentSnippets(data);
     };
 
-    fetchBlogPreviews();
-  }, [id]);
+    fetchDocumentSnippets();
+  }, [query]);
 
   return (
     <div className="container mx-auto px-4 py-8">
@@ -35,8 +40,12 @@ const BlogPreview = () => {
       <br />
       <br />
       <ul className="overflow-hidden">
-        {blogPreviews.map((blog) => (
-          <PreviewCard key={blog._id} blog={blog} highlightPattern={id} />
+        {documentSnippets.map((doc, index) => (
+          <PreviewCard 
+            key={index} 
+            document={doc} 
+            highlightPattern={query} 
+          />
         ))}
       </ul>
     </div>

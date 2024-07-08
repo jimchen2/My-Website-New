@@ -1,65 +1,77 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import BlogContent from "./BlogContent"; // Import the BlogContent component
-import MobileBlogContent from "./MobileBlogContent"; // Import the MobileBlogContent component
+import BlogContent from "./BlogContent";
+import MobileBlogContent from "./MobileBlogContent";
 
 interface Post {
-  body: string;
+  _id: string;
   title: string;
-  type: string;
   date: string;
+  type: string;
+  access: 1 | 2 | 3;
+  body: string;
 }
 
 interface BlogPostProps {
   mobile: boolean;
-  id: string; // Add 'id' to the component's props
+  title: string;
+  type?: string;
 }
 
-const BlogFetch: React.FC<BlogPostProps> = ({ mobile, id }) => {
-  const [post, setPost] = useState<Post[] | null>(null);
+const BlogFetch: React.FC<BlogPostProps> = ({ mobile, title, type }) => {
+  const [posts, setPosts] = useState<Post[] | null>(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    if (id) {
-      fetch(`/api/getBlog?date=${id}`)
+    if (title) {
+      let url = `/api/getBlog?title=${encodeURIComponent(title)}`;
+      if (type) {
+        url += `&type=${encodeURIComponent(type)}`;
+      }
+
+      fetch(url)
         .then((res) => res.json())
         .then((data) => {
-          setPost(data);
+          setPosts(Array.isArray(data) ? data : [data]);
           setLoading(false);
         })
         .catch((error) => {
-          console.error("Failed to fetch post:", error);
+          console.error("Failed to fetch posts:", error);
           setLoading(false);
         });
     }
-  }, [id]); 
-  
+  }, [title, type]);
+
   if (loading) {
     return <div className="text-center text-gray-500">Loading...</div>;
   }
 
-  if (!post || post.length === 0) {
-    return <div className="text-center text-gray-500">No post found</div>;
+  if (!posts || posts.length === 0) {
+    return <div className="text-center text-gray-500">No posts found</div>;
   }
 
   return (
     <div>
-      {mobile ? (
-        <MobileBlogContent
-          title={post[0].title}
-          type={post[0].type}
-          date={post[0].date}
-          body={post[0].body}
-        />
-      ) : (
-        <BlogContent
-          title={post[0].title}
-          type={post[0].type}
-          date={post[0].date}
-          body={post[0].body}
-        />
-      )}
+      {posts.map((post) => (
+        <div key={post._id}>
+          {mobile ? (
+            <MobileBlogContent
+              title={post.title}
+              type={post.type}
+              date={post.date}
+              body={post.body}
+            />
+          ) : (
+            <BlogContent
+              title={post.title}
+              type={post.type}
+              date={post.date}
+              body={post.body}
+            />
+          )}
+        </div>
+      ))}
     </div>
   );
 };
