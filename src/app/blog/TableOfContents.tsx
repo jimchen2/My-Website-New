@@ -1,34 +1,39 @@
 import React from "react";
 
 interface TOCProps {
-  headings: { id: string; text: string; tagName: string }[];
+  headings: { id: string; text: string; level: number }[];
 }
 
 interface TreeNode {
   id: string;
   text: string;
-  tagName: string;
+  level: number;
   children: TreeNode[];
 }
 
 const buildTree = (headings: TOCProps["headings"]): TreeNode[] => {
   const tree: TreeNode[] = [];
-  let currentParent: TreeNode | null = null;
+  const stack: TreeNode[] = [];
 
   for (const heading of headings) {
-    if (heading.tagName !== "H2") {
-      continue;
-    }
-
     const node: TreeNode = {
       id: heading.id,
       text: heading.text,
-      tagName: heading.tagName,
+      level: heading.level,
       children: [],
     };
 
-    tree.push(node);
-    currentParent = node;
+    while (stack.length > 0 && stack[stack.length - 1].level >= heading.level) {
+      stack.pop();
+    }
+
+    if (stack.length === 0) {
+      tree.push(node);
+    } else {
+      stack[stack.length - 1].children.push(node);
+    }
+
+    stack.push(node);
   }
 
   return tree;
@@ -41,10 +46,10 @@ const TableOfContents: React.FC<TOCProps> = ({ headings }) => {
     event: React.MouseEvent<HTMLAnchorElement, MouseEvent>,
     id: string
   ) => {
-    event.preventDefault(); // Prevent default anchor behavior
+    event.preventDefault();
     const element = document.getElementById(id);
     if (element) {
-      const offset = 75; // Adjust this value to the offset you need
+      const offset = 75;
       const elementPosition = element.getBoundingClientRect().top;
       const offsetPosition = elementPosition + window.scrollY - offset;
 
@@ -57,9 +62,9 @@ const TableOfContents: React.FC<TOCProps> = ({ headings }) => {
 
   const renderTree = (nodes: TreeNode[], depth = 0) => {
     return (
-      <ul className="space-y-2.5">
+      <ul className={`space-y-2.5 ${depth > 0 ? 'ml-4' : ''}`}>
         {nodes.map((node, index) => (
-          <li key={index} className="text-md">
+          <li key={index} className={`text-md ${depth > 0 ? 'text-sm' : ''}`}>
             <a
               href={`#${node.id}`}
               onClick={(event) => handleLinkClick(event, node.id)}

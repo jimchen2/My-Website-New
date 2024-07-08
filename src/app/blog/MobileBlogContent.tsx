@@ -14,16 +14,16 @@ interface BlogContentProps {
 interface Heading {
   id: string;
   text: string;
-  tagName: string;
+  level: number;
 }
 
 function extractHeadings(html: string): Heading[] {
   const tmp = document.createElement("div");
   tmp.innerHTML = html;
-  const headings = Array.from(tmp.querySelectorAll("h2")).map((heading) => ({
+  const headings = Array.from(tmp.querySelectorAll("h2, h3, h4, h5, h6")).map((heading) => ({
     id: heading.id,
     text: heading.textContent || "",
-    tagName: heading.tagName,
+    level: parseInt(heading.tagName.charAt(1)),
   }));
   return headings;
 }
@@ -36,13 +36,11 @@ const BlogContent: React.FC<BlogContentProps> = ({ title, type, date, body }) =>
     const renderLatex = (html: string) => {
       const codeBlocks: string[] = [];
 
-      // Replace <pre><code> blocks and inline <code> with placeholders
       const htmlWithoutCode = html.replace(/(<pre><code>[\s\S]*?<\/code><\/pre>)|(<code>[^<]+<\/code>)/g, (match) => {
         codeBlocks.push(match);
         return `__CODE_BLOCK_${codeBlocks.length - 1}__`;
       });
 
-      // Process LaTeX in the remaining text
       const processedHtml = htmlWithoutCode.replace(/\$\$(.*?)\$\$|\$(.*?)\$/g, (match, block, inline) => {
         const latex = block || inline;
         const displayMode = !!block;
@@ -50,16 +48,23 @@ const BlogContent: React.FC<BlogContentProps> = ({ title, type, date, body }) =>
           return katex.renderToString(latex, { displayMode });
         } catch (error) {
           console.error("KaTeX error:", error);
-          return match; // Return original string if KaTeX fails
+          return match;
         }
       });
 
-      // Restore code blocks
       return processedHtml.replace(/__CODE_BLOCK_(\d+)__/g, (_, index) => codeBlocks[parseInt(index)]);
     };
 
     const renderMarkdown = () => {
       if (contentRef.current) {
+        const renderer = new marked.Renderer();
+        renderer.heading = (text, level) => {
+          const escapedText = text.toLowerCase().replace(/[^\w]+/g, "-");
+          return `<h${level} id="${escapedText}">${text}</h${level}>`;
+        };
+
+        marked.use({ renderer });
+
         const renderedMarkdown = marked(body);
         const htmlWithLatex = renderLatex(renderedMarkdown);
         contentRef.current.innerHTML = htmlWithLatex;
@@ -69,7 +74,6 @@ const BlogContent: React.FC<BlogContentProps> = ({ title, type, date, body }) =>
 
     renderMarkdown();
 
-    // Scroll to the hash if present
     if (window.location.hash) {
       const elementId = window.location.hash.substring(1).toLowerCase();
       const element = document.getElementById(elementId);
@@ -77,7 +81,7 @@ const BlogContent: React.FC<BlogContentProps> = ({ title, type, date, body }) =>
         element.scrollIntoView();
         setTimeout(() => {
           window.scrollBy(0, -35);
-        }, 100); // Adjust the delay as needed
+        }, 100);
       }
     }
   }, [body]);
