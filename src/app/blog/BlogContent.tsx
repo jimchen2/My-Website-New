@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { MathJax, MathJaxContext } from "better-react-mathjax";
 import TableOfContents from "./TableOfContents";
-import "./blog.css";
 
 interface BlogContentProps {
   title: string;
   type: string;
-  date: Date;  // Changed to Date type
+  date: Date; // Changed to Date type
   body: string;
 }
 
@@ -27,12 +26,7 @@ function extractHeadings(html: string): Heading[] {
   return headings;
 }
 
-const BlogContent: React.FC<BlogContentProps> = ({
-  title,
-  type,
-  date,
-  body,
-}) => {
+const BlogContent: React.FC<BlogContentProps> = ({ title, type, date, body }) => {
   const [headings, setHeadings] = useState<Heading[]>([]);
 
   useEffect(() => {
@@ -62,23 +56,18 @@ const BlogContent: React.FC<BlogContentProps> = ({
             <h1 className="text-3xl font-bold mb-4">{title}</h1>
             <div className="mt-4">
               <p className="text-sm text-gray-500 mb-4">
-                {date.toLocaleDateString()}  {/* Using Date object directly */}
+                {date.toLocaleDateString()} {/* Using Date object directly */}
               </p>
             </div>
             <div className="prose lg:prose-xl break-words">
               <MathJax>
                 <div className="scoped-styles">
-                  <div
-                    className="break-words overflow-auto"
-                    dangerouslySetInnerHTML={{ __html: body }}
-                  />
+                  <div className="break-words overflow-auto" dangerouslySetInnerHTML={{ __html: body }} />
                 </div>
               </MathJax>
             </div>
             <br />
-            <span className="inline-block bg-gray-300 text-black-200 text-xs px-2 py-1 rounded-full">
-              {type}
-            </span>
+            <span className="inline-block bg-gray-300 text-black-200 text-xs px-2 py-1 rounded-full">{type}</span>
           </div>
           <div className="w-1/2 lg:pl-8 right lg:sticky min-w-[250px]">
             <TableOfContents headings={headings} />

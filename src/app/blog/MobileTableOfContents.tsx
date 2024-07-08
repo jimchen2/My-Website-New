@@ -1,5 +1,4 @@
 import React from "react";
-import { useTranslation } from "react-i18next";
 
 interface TOCProps {
   headings: { id: string; text: string; tagName: string }[];
@@ -37,7 +36,6 @@ const buildTree = (headings: TOCProps["headings"]): TreeNode[] => {
 
 const TableOfContents: React.FC<TOCProps> = ({ headings }) => {
   const tree = buildTree(headings);
-  const { t } = useTranslation("header");
 
   const handleLinkClick = (
     event: React.MouseEvent<HTMLAnchorElement, MouseEvent>,
@@ -78,7 +76,7 @@ const TableOfContents: React.FC<TOCProps> = ({ headings }) => {
 
   return (
     <div className="blog-toc sticky top-0 overflow-y-auto max-h-screen p-4">
-      <h2 className="text-lg font-bold mb-4">{t("Table of Contents")}</h2>
+      <h2 className="text-lg font-bold mb-4">Table of Contents</h2>
       {renderTree(tree)}
     </div>
   );

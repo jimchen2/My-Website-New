@@ -19,15 +19,17 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     }
 
     try {
-      const allDocuments = await Document.find(query);
+      const document = await Document.findOne(query);
       
-      const documents = allDocuments.filter(doc => doc.access === 1);
+      if (!document || document.access !== 1) {
+        return res.status(404).json({ message: "Document not found or not accessible" });
+      }
 
-      const sanitizedDocuments = documents.map(({ access, ...rest }) => rest);
+      const { access, ...sanitizedDocument } = document.toObject();
 
-      res.status(200).json(sanitizedDocuments);
+      res.status(200).json(sanitizedDocument);
     } catch (err) {
-      res.status(500).json({ message: "Error fetching documents", error: err });
+      res.status(500).json({ message: "Error fetching document", error: err });
     }
   } else {
     res.setHeader("Allow", ["GET"]);

@@ -1,7 +1,7 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import BlogFetch from "./blog/BlogFetch";
-import BlogPreview from "./BlogPreview"; // Make sure the path is correct.
+import BlogPreview from "./BlogPreview";
 import { useSearchParams } from "next/navigation";
 
 const BlogManager: React.FC = () => {
@@ -10,7 +10,7 @@ const BlogManager: React.FC = () => {
   const params = useSearchParams();
   const id = params.get("blog");
 
-  const [selectedBlogId, setSelectedBlogId] = useState(id);
+  const [selectedBlogTitle, setSelectedBlogTitle] = useState(id);
 
   useEffect(() => {
     const handleResize = () => {
@@ -27,15 +27,15 @@ const BlogManager: React.FC = () => {
     };
   }, []);
 
-  const handleSelectBlogId = (uuid: string) => {
-    setSelectedBlogId(uuid);
+  const handleSelectBlogId = (title: string) => {
+    setSelectedBlogTitle(title);
   };
 
   return (
     <div className="flex min-h-screen">
       {mobile ? (
         <div>
-          <BlogFetch mobile={mobile} id={selectedBlogId} />
+          <BlogFetch mobile={mobile} title={selectedBlogTitle} />
           <BlogPreview
             mobile={mobile}
             newlines={4}
@@ -49,11 +49,11 @@ const BlogManager: React.FC = () => {
               mobile={mobile}
               newlines={2}
               fontSize="text-lg"
-              onSelectBlogId={handleSelectBlogId} // Pass the handler here
+              onSelectBlogId={handleSelectBlogId}
             />
           </div>
           <div>
-            <BlogFetch mobile={mobile} id={selectedBlogId} />
+            <BlogFetch mobile={mobile} title={selectedBlogTitle} />
           </div>
         </div>
       )}

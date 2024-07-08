@@ -41,6 +41,13 @@ const DocumentSchema: Schema = new Schema(
   { versionKey: false, collection: collection }
 );
 
+// Add indexes
+DocumentSchema.index({ title: 1 });
+DocumentSchema.index({ date: -1 });
+DocumentSchema.index({ type: 1 });
+DocumentSchema.index({ access: 1 });
+DocumentSchema.index({ type: 1, access: 1 });
+
 const Document: Model<IDocument> = mongoose.models.Document || mongoose.model<IDocument>("Document", DocumentSchema);
 
 export default Document;

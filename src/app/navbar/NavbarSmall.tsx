@@ -3,14 +3,13 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { motion } from "framer-motion";
 
-const NavBrand: React.FC = () => (
-  <div className="text-lg p-2 hover:bg-gray-200 transition-colors duration-300 cursor-pointer">
-    Jim Chen's Blog
-  </div>
-);
-
 const NavLinks: React.FC = () => (
-  <div className="flex items-center">
+  <div className="flex items-center space-x-4">
+    <motion.div whileHover={{ scale: 1.05 }}>
+      <Link href="/" className="text-lg p-2 hover:bg-gray-200 transition-colors duration-300">
+        Home
+      </Link>
+    </motion.div>
     <motion.div whileHover={{ scale: 1.05 }}>
       <Link href="https://link.jimchen.me" className="text-lg p-2 hover:bg-gray-200 transition-colors duration-300">
         My LinkTree
@@ -67,12 +66,7 @@ const NavbarSmall: React.FC = () => {
     <header className="fixed top-0 z-50 w-full bg-white shadow-md font-quicksand font-bold">
       <nav className="container mx-auto px-4 py-3">
         <div className="flex items-center justify-between">
-          {!isSearchOpen && (
-            <div className="flex items-center space-x-4">
-              <NavBrand />
-              <NavLinks />
-            </div>
-          )}
+          {!isSearchOpen && <NavLinks />}
           <div className="flex items-center">
             {isSearchOpen ? (
               <SearchForm 
