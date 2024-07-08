@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useState, useEffect } from "react";
 import NavbarLarge from "./NavbarLarge";
 import NavbarSmall from "./NavbarSmall";

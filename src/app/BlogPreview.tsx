@@ -65,10 +65,10 @@ const BlogPreview: React.FC<BlogPreviewProps> = ({
   };
 
   return (
-    <div className="flex flex-col md:flex-row gap-4 p-4 font-comicsans">
+    <div className="flex flex-col md:flex-row gap-4 p-4 font-opensans">
       <div className="w-full sticky top-0">
         {renderNewlines()}
-        <header className={`${fontSize} font-light p-4 text-center`}>
+        <header className={`${fontSize} font-normal p-4 text-center`}>
           My Blogs
         </header>
         <ul className="overflow-x-hidden">
@@ -76,12 +76,12 @@ const BlogPreview: React.FC<BlogPreviewProps> = ({
             <li key={docType.type}>
               <div className="rounded-lg transition duration-300 ease-in-out transform">
                 <div
-                  className={`flex items-center space-y-2 text-md cursor-pointer justify-between hover:bg-gray-200 p-3 ${
+                  className={`flex items-center space-y-2 text-sm cursor-pointer justify-between hover:bg-gray-200 p-3 ${
                     mobile ? "min-w-[320px]" : ""
                   }`}
                   onClick={() => toggleDropdown(docType.type)}
                 >
-                  <h4 className="font-thin text-gray-800">
+                  <h4 className="font-medium text-gray-800">
                     {docType.type} ({docType.documents.length})
                   </h4>
                   <ChevronDownIcon
@@ -101,11 +101,11 @@ const BlogPreview: React.FC<BlogPreviewProps> = ({
                     {docType.documents.map((doc) => (
                       <li
                         key={doc.title}
-                        className="p-2 rounded-lg transition duration-300 ease-in-out transform text-sm hover:bg-gray-200 hover:shadow-lg hover:cursor-pointer"
+                        className="p-2 rounded-lg transition duration-300 ease-in-out transform text-xs hover:bg-gray-200 hover:shadow-lg hover:cursor-pointer"
                         onClick={() => handleSelectDocument(doc.title)}
                       >
                         <div className="flex justify-center">
-                          <h6 className="text-center text-sm font-light">
+                          <h6 className="text-center text-sm font-normal">
                             {doc.title}
                           </h6>
                         </div>

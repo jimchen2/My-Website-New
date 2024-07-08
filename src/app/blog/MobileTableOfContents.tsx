@@ -49,7 +49,7 @@ const TableOfContents: React.FC<TOCProps> = ({ headings }) => {
     event.preventDefault();
     const element = document.getElementById(id);
     if (element) {
-      const offset = 135;
+      const offset = 70;
       const elementPosition = element.getBoundingClientRect().top;
       const offsetPosition = elementPosition + window.scrollY - offset;
 

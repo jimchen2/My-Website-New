@@ -3,6 +3,7 @@ import { marked } from "marked";
 import katex from "katex";
 import "katex/dist/katex.min.css";
 import TableOfContents from "./MobileTableOfContents";
+import "./blog.css";
 
 interface BlogContentProps {
   title: string;
@@ -100,7 +101,7 @@ const BlogContent: React.FC<BlogContentProps> = ({ title, type, date, body }) =>
           <div className="mt-4">
             <p className="text-sm text-gray-500 mb-4">{new Date(date).toLocaleDateString()}</p>
           </div>
-          <div className="prose lg:prose-xl break-words">
+          <div className="font-opensans scoped-styles prose lg:prose-xl break-words">
             <div ref={contentRef} className="break-words" />
           </div>
           <br />
