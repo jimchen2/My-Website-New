@@ -1,6 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 import dbConnect from "../../db/dbConnect";
-import Blog from "../../models/blog.model";
+import Blog from "../../models/document.model";
 import { Feed } from 'feed';
 
 export default async function handler(
@@ -35,11 +35,12 @@ export default async function handler(
           content: blog.body,
           author: [
             {
-                name: "JC",
-                email: "jimchen4214@gmail.com",
-              },
+              name: "JC",
+              email: "jimchen4214@gmail.com",
+            },
           ],
           date: new Date(blog.date),
+          link: `https://jimchen.me/blog/${blog._id}`, // Add this line
           category: [{ name: blog.type }],
         });
       });

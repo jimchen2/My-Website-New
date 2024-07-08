@@ -15,7 +15,7 @@ RUN git clone https://github.com/jimchen2/My-Website-New .
 RUN npm install
 
 # Build the Next.js app
-RUN npm run build:en
+RUN npm run build
 
 # Expose the port the app runs on
 EXPOSE 3000

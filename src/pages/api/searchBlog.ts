@@ -1,12 +1,13 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 import dbConnect from "../../db/dbConnect";
-import Blog from "../../models/blog.model";
+import Document from "../../models/document.model";
 
-interface BlogSnippet {
+interface DocumentSnippet {
   title: string;
   date: string;
   type: string;
   body: string;
+  access: 1 | 2 | 3;
   isTitleMatch: boolean;
   isBodyMatch: boolean;
 }
@@ -37,44 +38,51 @@ export default async function handler(
   await dbConnect();
 
   if (req.method === "GET") {
-    const { query } = req.query;
+    const { query, access } = req.query;
 
     try {
-      let blogs;
+      let documents;
       
       if (query && typeof query === "string") {
         const escapedQuery = escapeRegex(query);
         const regex = new RegExp(escapedQuery, "i");
 
-        blogs = await Blog.find();
-        blogs = blogs
-          .map((blog) => {
-            const isTitleMatch = regex.test(blog.title);
-            const isBodyMatch = regex.test(blog.body);
-            const snippet = getRelevantSnippet(blog.body, query, isTitleMatch);
+        documents = await Document.find();
+        documents = documents
+          .map((doc) => {
+            const isTitleMatch = regex.test(doc.title);
+            const isBodyMatch = regex.test(doc.body);
+            const snippet = getRelevantSnippet(doc.body, query, isTitleMatch);
 
             return {
-              title: blog.title,
-              date: blog.date,
-              type: blog.type,
+              title: doc.title,
+              date: doc.date,
+              type: doc.type,
               body: snippet,
+              access: doc.access,
               isTitleMatch,
               isBodyMatch,
             };
           })
-          .filter((blog) => blog.isTitleMatch || blog.isBodyMatch);
+          .filter((doc) => doc.isTitleMatch || doc.isBodyMatch);
       } else {
-        blogs = await Blog.find();
+        documents = await Document.find();
       }
 
-      // Sort blogs by date in descending order
-      blogs.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+      // Filter by access level if provided
+      if (access && typeof access === "string") {
+        const accessLevel = parseInt(access);
+        documents = documents.filter((doc) => doc.access <= accessLevel);
+      }
 
-      res.status(200).json(blogs);
+      // Sort documents by date in descending order
+      documents.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+
+      res.status(200).json(documents);
     } catch (err) {
       res
         .status(500)
-        .json({ message: "Error searching for blog entries", error: err });
+        .json({ message: "Error searching for documents", error: err });
     }
   } else {
     res.setHeader("Allow", ["GET"]);

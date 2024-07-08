@@ -2,17 +2,3 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-body {
-  @apply font-body;
-}
-
-/* To apply the code font family */
-code {
-  @apply font-code;
-}
-
-/* To apply the mono font family to <pre> tags */
-pre {
-  @apply font-mono;
-}
