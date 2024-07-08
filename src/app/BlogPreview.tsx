@@ -69,7 +69,7 @@ const BlogPreview: React.FC<BlogPreviewProps> = ({
       <div className="w-full sticky top-0">
         {renderNewlines()}
         <header className={`${fontSize} font-bold p-4 text-center`}>
-          My Documents
+          My Blogs
         </header>
         <ul className="overflow-x-hidden">
           {documentTypes.map((docType) => (

@@ -12,7 +12,10 @@ export default async function handler(
   if (req.method === "GET") {
     try {
       // Fetch all blogs
-      const blogs = await Blog.find({}).sort({ date: -1 }); // Sort by date descending
+      const allBlogs = await Blog.find({}).sort({ date: -1 }); // Sort by date descending
+
+      // Filter blogs with access === 1
+      const blogs = allBlogs.filter(blog => blog.access === 1);
 
       // Create a new feed
       const feed = new Feed({
@@ -21,7 +24,7 @@ export default async function handler(
         link: "https://jimchen.me/",
         favicon: "https://jimchen.me/icon-512x512.png",
         copyright: `All rights reserved ${new Date().getFullYear()}, JC`,
-        updated: new Date(blogs[0].date), 
+        updated: blogs.length > 0 ? new Date(blogs[0].date) : new Date(),
         generator: "Next.js using Feed for Node.js",
         author: {
           name: "JC",
@@ -40,7 +43,7 @@ export default async function handler(
             },
           ],
           date: new Date(blog.date),
-          link: `https://jimchen.me/blog/${blog._id}`, // Add this line
+          link: `https://jimchen.me/blog/${blog._id}`,
           category: [{ name: blog.type }],
         });
       });

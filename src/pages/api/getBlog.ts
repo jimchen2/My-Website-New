@@ -8,7 +8,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   if (req.method === "GET") {
     const { title, type } = req.query;
 
-    let query: { title?: string; type?: string; access: number } = { access: 1 };
+    let query: { title?: string; type?: string } = {};
 
     if (title) {
       query.title = title as string;
@@ -19,8 +19,13 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     }
 
     try {
-      const documents = await Document.find(query);
-      res.status(200).json(documents);
+      const allDocuments = await Document.find(query);
+      
+      const documents = allDocuments.filter(doc => doc.access === 1);
+
+      const sanitizedDocuments = documents.map(({ access, ...rest }) => rest);
+
+      res.status(200).json(sanitizedDocuments);
     } catch (err) {
       res.status(500).json({ message: "Error fetching documents", error: err });
     }

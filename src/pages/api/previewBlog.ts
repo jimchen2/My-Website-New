@@ -5,7 +5,6 @@ import Document from "../../models/document.model";
 interface DocumentEntry {
   title: string;
   date: Date;
-  access: 1 | 2 | 3;
 }
 
 type DocumentsByType = {
@@ -20,7 +19,10 @@ export default async function handler(
 
   if (req.method === "GET") {
     try {
-      const documents = await Document.find({ access: 1 }, 'title date type');
+      const allDocuments = await Document.find({}, 'title date type access');
+
+      // Filter documents with access === 1
+      const documents = allDocuments.filter(doc => doc.access === 1);
 
       // Group documents by type
       const documentsByType: DocumentsByType = documents.reduce((acc: DocumentsByType, doc) => {
@@ -29,8 +31,7 @@ export default async function handler(
         }
         acc[doc.type].push({
           title: doc.title,
-          date: new Date(doc.date),
-          access: doc.access
+          date: new Date(doc.date)
         });
         return acc;
       }, {});

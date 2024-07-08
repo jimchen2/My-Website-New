@@ -2,16 +2,6 @@ import type { NextApiRequest, NextApiResponse } from "next";
 import dbConnect from "../../db/dbConnect";
 import Document from "../../models/document.model";
 
-interface DocumentSnippet {
-  title: string;
-  date: Date;
-  type: string;
-  body: string;
-  access: 1;
-  isTitleMatch: boolean;
-  isBodyMatch: boolean;
-}
-
 function escapeRegex(text: string): string {
   return text.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, "\\$&");
 }
@@ -22,11 +12,11 @@ function getRelevantSnippet(
   isTitleMatch: boolean
 ): string {
   if (isTitleMatch) {
-    return body.substring(0, 150);
+    return body.substring(0, 300);
   } else {
     const index = body.toLowerCase().indexOf(searchTerm.toLowerCase());
-    const start = Math.max(index - 75, 0);
-    const end = Math.min(start + 150, body.length);
+    const start = Math.max(index - 150, 0);
+    const end = Math.min(start + 300, body.length);
     return body.substring(start, end);
   }
 }
@@ -47,8 +37,9 @@ export default async function handler(
         const escapedQuery = escapeRegex(query);
         const regex = new RegExp(escapedQuery, "i");
 
-        documents = await Document.find({ access: 1 });
+        documents = await Document.find();
         documents = documents
+          .filter(doc => doc.access === 1)
           .map((doc) => {
             const isTitleMatch = regex.test(doc.title);
             const isBodyMatch = regex.test(doc.body);
@@ -59,17 +50,23 @@ export default async function handler(
               date: doc.date,
               type: doc.type,
               body: snippet,
-              access: doc.access,
               isTitleMatch,
               isBodyMatch,
             };
           })
           .filter((doc) => doc.isTitleMatch || doc.isBodyMatch);
       } else {
-        documents = await Document.find({ access: 1 });
+        documents = await Document.find();
+        documents = documents
+          .filter(doc => doc.access === 1)
+          .map((doc) => ({
+            title: doc.title,
+            date: doc.date,
+            type: doc.type,
+            body: doc.body.substring(0, 300),
+          }));
       }
 
-      // Sort documents by date in descending order
       documents.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 
       res.status(200).json(documents);

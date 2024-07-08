@@ -16,7 +16,7 @@ interface DocumentSnippet {
 
 const BlogPreview = () => {
   const params = useParams();
-  const query = params?.query as string;
+  const query = params?.id as string;
 
   const [documentSnippets, setDocumentSnippets] = useState<DocumentSnippet[]>([]);
 
@@ -39,13 +39,9 @@ const BlogPreview = () => {
       <br />
       <br />
       <br />
-      <ul className="overflow-hidden">
+      <ul className="space-y-4">
         {documentSnippets.map((doc, index) => (
-          <PreviewCard 
-            key={index} 
-            document={doc} 
-            highlightPattern={query} 
-          />
+          <PreviewCard key={index} document={doc} highlightPattern={query} />
         ))}
       </ul>
     </div>
