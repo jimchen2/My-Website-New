@@ -91,7 +91,7 @@ const BlogPreview: React.FC<BlogPreviewProps> = ({
                   />
                 </div>
                 <div
-                  className={`transition-max-height duration-500 ease-in-out overflow-hidden ${
+                  className={`transition-max-height duration-500 ease-in-out overflow-auto ${
                     openDropdowns[docType.type]
                       ? "max-h-[500px] opacity-100"
                       : "max-h-0 opacity-0"

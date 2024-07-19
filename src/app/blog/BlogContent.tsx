@@ -123,7 +123,7 @@ const BlogContent: React.FC<BlogContentProps> = ({ title, type, date, body }) =>
           <div className="mt-4">
             <p className="text-sm text-gray-500 mb-4">{date.toLocaleDateString()}</p>
           </div>
-          <div className="font-opensans scoped-styles prose lg:prose-xl break-words">
+          <div className="font-nunito font-normal scoped-styles prose lg:prose-xl break-words">
             <div ref={contentRef} className="break-words" />
           </div>
           <br />
