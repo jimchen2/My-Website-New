@@ -14,6 +14,9 @@ RUN git clone https://github.com/jimchen2/My-Website-New .
 # Install dependencies
 RUN npm install
 
+# Install NextJS
+RUN npm install next
+
 # Build the Next.js app
 RUN npm run build
 
