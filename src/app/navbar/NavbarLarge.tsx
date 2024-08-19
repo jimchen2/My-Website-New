@@ -6,7 +6,7 @@ import { motion } from "framer-motion";
 const NavLinks: React.FC = () => (
   <div className="flex items-center space-x-4">
     <motion.div whileHover={{ scale: 1.05 }}>
-      <Link href="/search/2024" className="text-lg p-2 hover:bg-gray-200 transition-colors duration-300">
+      <Link href="/search/%20" className="text-lg p-2 hover:bg-gray-200 transition-colors duration-300">
         Jim Chen's Blog
       </Link>
     </motion.div>
