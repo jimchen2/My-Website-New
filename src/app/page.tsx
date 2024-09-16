@@ -10,7 +10,7 @@ const BlogManager: React.FC = () => {
   const params = useSearchParams();
   const title = params.get("title");
 
-  const [selectedBlogTitle, setSelectedBlogTitle] = useState("Introduction");
+  const [selectedBlogTitle, setSelectedBlogTitle] = useState("");
 
   useEffect(() => {
     const handleResize = () => {
@@ -28,6 +28,8 @@ const BlogManager: React.FC = () => {
       setSelectedBlogTitle(title);
       // Redirect to the base URL
       router.replace("/", undefined, { shallow: true });
+    } else {
+      setSelectedBlogTitle("Introduction");
     }
   }, [title, router]);
 
