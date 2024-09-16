@@ -8,9 +8,9 @@ const BlogManager: React.FC = () => {
   const [mobile, setMobile] = useState(false);
   const router = useRouter();
   const params = useSearchParams();
-  const title = params.get("title");
+  const urlTitle = params.get("title");
 
-  const [selectedBlogTitle, setSelectedBlogTitle] = useState("");
+  const [selectedBlogTitle, setSelectedBlogTitle] = useState(urlTitle || "Introduction");
 
   useEffect(() => {
     const handleResize = () => {
@@ -24,17 +24,14 @@ const BlogManager: React.FC = () => {
   }, []);
 
   useEffect(() => {
-    if (title) {
-      setSelectedBlogTitle(title);
-      // Redirect to the base URL
-      router.replace("/", undefined, { shallow: true });
-    } else {
-      setSelectedBlogTitle("Introduction");
+    if (urlTitle && urlTitle !== selectedBlogTitle) {
+      setSelectedBlogTitle(urlTitle);
     }
-  }, [title, router]);
+  }, [urlTitle]);
 
   const handleSelectBlogId = (title: string) => {
     setSelectedBlogTitle(title);
+    router.push(`/?title=${encodeURIComponent(title)}`, undefined, { shallow: true });
   };
 
   return (
