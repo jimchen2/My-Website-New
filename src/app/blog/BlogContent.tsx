@@ -1,8 +1,11 @@
+// BlogContent.tsx
 import React, { useEffect, useState, useRef } from "react";
+import ReactDOM from 'react-dom';
 import { marked } from "marked";
 import katex from "katex";
 import "katex/dist/katex.min.css";
 import TableOfContents from "./TableOfContents";
+import CopyButton from "./CopyButton";
 import "./blog.css";
 
 interface BlogContentProps {
@@ -69,23 +72,36 @@ const BlogContent: React.FC<BlogContentProps> = ({ title, type, date, body }) =>
       if (contentRef.current) {
         const renderer = new marked.Renderer();
         renderer.heading = (text, level) => {
-          console.log("Heading:", { text, level });
           const escapedText = text.toLowerCase().replace(/[^\w]+/g, "-");
           return `<h${level} id="${escapedText}">${text}</h${level}>`;
         };
 
+        renderer.code = (code, language) => {
+          const escapedCode = code.replace(/`/g, '&#96;');
+          return `
+            <div class="code-block-wrapper">
+              <pre><code class="language-${language}">${escapedCode}</code></pre>
+              <div class="copy-button-container" data-code="${escapedCode}"></div>
+            </div>
+          `;
+        };
+        
         marked.use({ renderer });
 
         const renderedMarkdown = marked(body);
-        console.log("Rendered markdown:", renderedMarkdown);
 
         const htmlWithLatex = renderLatex(renderedMarkdown);
-        console.log("HTML with LaTeX:", htmlWithLatex);
 
         contentRef.current.innerHTML = htmlWithLatex;
         const extractedHeadings = extractHeadings(htmlWithLatex);
-        console.log("Extracted headings:", extractedHeadings);
         setHeadings(extractedHeadings);
+
+        // Add copy buttons to code blocks
+        const copyButtonContainers = contentRef.current.querySelectorAll('.copy-button-container');
+        copyButtonContainers.forEach((container) => {
+          const code = (container as HTMLElement).dataset.code || '';
+          ReactDOM.render(<CopyButton text={code} />, container);
+        });
       }
     };
 
@@ -123,7 +139,7 @@ const BlogContent: React.FC<BlogContentProps> = ({ title, type, date, body }) =>
           <div className="mt-4">
             <p className="text-sm text-gray-500 mb-4">{date.toLocaleDateString()}</p>
           </div>
-          <div className="font-nunito font-normal scoped-styles prose lg:prose-xl break-words">
+          <div className="font-nunito font-normal scopedStyles prose lg:prose-xl break-words">
             <div ref={contentRef} className="break-words" />
           </div>
           <br />

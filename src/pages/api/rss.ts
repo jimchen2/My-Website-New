@@ -43,7 +43,7 @@ export default async function handler(
             },
           ],
           date: new Date(blog.date),
-          link: `https://jimchen.me/blog/${blog._id}`,
+          link: `https://jimchen.me?title=${blog.title}`,
           category: [{ name: blog.type }],
         });
       });

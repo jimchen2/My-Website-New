@@ -10,7 +10,7 @@ const BlogManager: React.FC = () => {
   const params = useSearchParams();
   const title = params.get("title");
 
-  const [selectedBlogTitle, setSelectedBlogTitle] = useState("");
+  const [selectedBlogTitle, setSelectedBlogTitle] = useState("Introduction");
 
   useEffect(() => {
     const handleResize = () => {
