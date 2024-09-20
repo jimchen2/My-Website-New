@@ -59,20 +59,23 @@ const BlogContent: React.FC<BlogContentProps> = ({ title, type, date, body }) =>
     const renderMarkdown = () => {
       if (contentRef.current) {
         const renderer = new marked.Renderer();
+        let headingCounter = 0;
         renderer.heading = (text, level) => {
+          headingCounter++;
           const escapedText = text.toLowerCase().replace(/[^\w]+/g, "-");
-          return `<h${level} id="${escapedText}">${text}</h${level}>`;
+          const uniqueId = `${escapedText}-${level}-${headingCounter}`;
+          return `<h${level} id="${uniqueId}">${text}</h${level}>`;
         };
-
+    
         marked.use({ renderer });
-
+    
         const renderedMarkdown = marked(body);
         const htmlWithLatex = renderLatex(renderedMarkdown);
         contentRef.current.innerHTML = htmlWithLatex;
         setHeadings(extractHeadings(htmlWithLatex));
       }
     };
-
+    
     renderMarkdown();
 
     if (window.location.hash) {

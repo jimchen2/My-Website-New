@@ -62,11 +62,15 @@ const BlogContent: React.FC<BlogContentProps> = ({ title, type, date, body }) =>
     const renderMarkdown = () => {
       if (contentRef.current) {
         const renderer = new marked.Renderer();
+        let headingCounter = 0;
+    
         renderer.heading = (text, level) => {
+          headingCounter++;
           const escapedText = text.toLowerCase().replace(/[^\w]+/g, "-");
-          return `<h${level} id="${escapedText}">${text}</h${level}>`;
+          const uniqueId = `${escapedText}-${level}-${headingCounter}`;
+          return `<h${level} id="${uniqueId}">${text}</h${level}>`;
         };
-
+    
         renderer.code = (code, language) => {
           const escapedCode = code.replace(/`/g, '&#96;');
           return `
@@ -78,15 +82,13 @@ const BlogContent: React.FC<BlogContentProps> = ({ title, type, date, body }) =>
         };
         
         marked.use({ renderer });
-
+    
         const renderedMarkdown = marked(body);
-
         const htmlWithLatex = renderLatex(renderedMarkdown);
-
         contentRef.current.innerHTML = htmlWithLatex;
         const extractedHeadings = extractHeadings(htmlWithLatex);
         setHeadings(extractedHeadings);
-
+    
         // Add copy buttons to code blocks
         const copyButtonContainers = contentRef.current.querySelectorAll('.copy-button-container');
         copyButtonContainers.forEach((container) => {
@@ -95,7 +97,7 @@ const BlogContent: React.FC<BlogContentProps> = ({ title, type, date, body }) =>
         });
       }
     };
-
+    
     renderMarkdown();
     
     if (window.location.hash) {
