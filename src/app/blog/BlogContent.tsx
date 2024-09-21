@@ -2,11 +2,11 @@
 import React, { useEffect, useState, useRef } from "react";
 import ReactDOM from 'react-dom';
 import { marked } from "marked";
-import katex from "katex";
 import "katex/dist/katex.min.css";
 import TableOfContents from "./TableOfContents";
 import CopyButton from "./CopyButton";
 import "./blog.css";
+import { renderLatex } from "./renderMarkdown";
 
 interface BlogContentProps {
   title: string;
@@ -37,28 +37,6 @@ const BlogContent: React.FC<BlogContentProps> = ({ title, type, date, body }) =>
   const contentRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const renderLatex = (html: string) => {
-      const codeBlocks: string[] = [];
-
-      const htmlWithoutCode = html.replace(/(<pre><code>[\s\S]*?<\/code><\/pre>)|(<code>[^<]+<\/code>)/g, (match) => {
-        codeBlocks.push(match);
-        return `__CODE_BLOCK_${codeBlocks.length - 1}__`;
-      });
-
-      const processedHtml = htmlWithoutCode.replace(/\$\$(.*?)\$\$|\$(.*?)\$/g, (match, block, inline) => {
-        const latex = block || inline;
-        const displayMode = !!block;
-        try {
-          return katex.renderToString(latex, { displayMode });
-        } catch (error) {
-          console.error("KaTeX error:", error);
-          return match;
-        }
-      });
-
-      return processedHtml.replace(/__CODE_BLOCK_(\d+)__/g, (_, index) => codeBlocks[parseInt(index)]);
-    };
-
     const renderMarkdown = () => {
       if (contentRef.current) {
         const renderer = new marked.Renderer();
@@ -83,8 +61,7 @@ const BlogContent: React.FC<BlogContentProps> = ({ title, type, date, body }) =>
         
         marked.use({ renderer });
     
-        const renderedMarkdown = marked(body);
-        const htmlWithLatex = renderLatex(renderedMarkdown);
+        const htmlWithLatex = renderLatex(body);
         contentRef.current.innerHTML = htmlWithLatex;
         const extractedHeadings = extractHeadings(htmlWithLatex);
         setHeadings(extractedHeadings);
