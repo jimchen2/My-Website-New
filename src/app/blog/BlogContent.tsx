@@ -1,6 +1,6 @@
 // BlogContent.tsx
 import React, { useEffect, useState, useRef } from "react";
-import ReactDOM from 'react-dom';
+import { createRoot } from 'react-dom/client';
 import { marked } from "marked";
 import "katex/dist/katex.min.css";
 import TableOfContents from "./TableOfContents";
@@ -48,9 +48,13 @@ const BlogContent: React.FC<BlogContentProps> = ({ title, type, date, body }) =>
           const uniqueId = `${escapedText}-${level}-${headingCounter}`;
           return `<h${level} id="${uniqueId}">${text}</h${level}>`;
         };
-    
         renderer.code = (code, language) => {
-          const escapedCode = code.replace(/`/g, '&#96;');
+          const escapedCode = code
+            .replace(/&/g, '&amp;')
+            .replace(/</g, '&lt;')
+            .replace(/>/g, '&gt;')
+            .replace(/"/g, '&quot;')
+            .replace(/'/g, '&#039;');
           return `
             <div class="code-block-wrapper">
               <pre><code class="language-${language}">${escapedCode}</code></pre>
@@ -70,7 +74,8 @@ const BlogContent: React.FC<BlogContentProps> = ({ title, type, date, body }) =>
         const copyButtonContainers = contentRef.current.querySelectorAll('.copy-button-container');
         copyButtonContainers.forEach((container) => {
           const code = (container as HTMLElement).dataset.code || '';
-          ReactDOM.render(<CopyButton text={code} />, container);
+          const root = createRoot(container);
+          root.render(<CopyButton text={code} />);
         });
       }
     };
