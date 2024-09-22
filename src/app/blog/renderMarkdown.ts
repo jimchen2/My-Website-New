@@ -30,8 +30,19 @@ export const renderLatex = (markdown: string) => {
     })
     .join("\n");
   
+
+    console.log(processedMarkdown)
+    console.log(processedMarkdown)
+    console.log(processedMarkdown)
+    console.log(processedMarkdown)
+    console.log(processedMarkdown)
+    console.log(processedMarkdown)
+    console.log(processedMarkdown)
+    console.log(processedMarkdown)
+    console.log(processedMarkdown)
+    console.log(processedMarkdown)
   // Step 2: Render Markdown
-  let renderedHtml = marked(processedMarkdown, { breaks: true });
+  let renderedHtml = marked(processedMarkdown);
 
 
 
