@@ -31,21 +31,8 @@ export const renderLatex = (markdown: string) => {
     .join("\n");
   
 
-    console.log(processedMarkdown)
-    console.log(processedMarkdown)
-    console.log(processedMarkdown)
-    console.log(processedMarkdown)
-    console.log(processedMarkdown)
-    console.log(processedMarkdown)
-    console.log(processedMarkdown)
-    console.log(processedMarkdown)
-    console.log(processedMarkdown)
-    console.log(processedMarkdown)
   // Step 2: Render Markdown
   let renderedHtml = marked(processedMarkdown);
-
-
-
 
   // Step 3: Render LaTeX and replace placeholders
   for (let i = 0; i < latexBlocks.length; i++) {
