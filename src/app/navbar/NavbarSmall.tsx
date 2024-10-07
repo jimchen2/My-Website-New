@@ -11,11 +11,6 @@ const NavLinks: React.FC = () => (
       Jim Chen's Blog
       </Link>
     </motion.div>
-    <motion.div whileHover={{ scale: 1.05 }}>
-      <Link href="https://link.jimchen.me" className="text-lg p-2 hover:bg-gray-200 transition-colors duration-300">
-        My LinkTree
-      </Link>
-    </motion.div>
   </div>
 );
 
