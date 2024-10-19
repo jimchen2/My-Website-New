@@ -3,6 +3,9 @@ import dbConnect from "../../db/dbConnect"; // Adjust the path as necessary
 import Document from "../../models/document.model";
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
+  // Set caching header for 1 week
+  res.setHeader('Cache-Control', 'public, max-age=604800');
+
   await dbConnect();
 
   if (req.method === "GET") {

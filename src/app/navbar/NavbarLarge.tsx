@@ -4,9 +4,9 @@ import { useRouter } from "next/navigation";
 import { motion } from "framer-motion";
 
 const NavLinks: React.FC = () => (
-  <div className="flex items-center space-x-4">
+  <div className="flex items-center">
     <motion.div whileHover={{ scale: 1.05 }}>
-      <Link href="/search/%20" className="text-lg p-2 hover:bg-gray-200 transition-colors duration-300">
+      <Link href="/search/%20" className="text-xl font-bold p-2 hover:bg-gray-200 transition-colors duration-300">
         Jim Chen's Blog
       </Link>
     </motion.div>
@@ -46,7 +46,7 @@ const NavbarLarge: React.FC = () => {
   };
 
   return (
-    <header className="fixed top-0 z-50 w-full bg-white shadow-md font-quicksand font-bold">
+    <header className="fixed top-0 z-50 w-full bg-white shadow-md font-quicksand">
       <nav className="container mx-auto px-4 py-3">
         <div className="flex items-center justify-between">
           <NavLinks />

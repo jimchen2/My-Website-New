@@ -101,7 +101,7 @@ const BlogPreview: React.FC<BlogPreviewProps> = ({
                     {docType.documents.map((doc) => (
                       <li
                         key={doc.title}
-                        className="p-2 rounded-lg transition duration-300 ease-in-out transform text-xs hover:bg-gray-200 hover:shadow-lg hover:cursor-pointer"
+                        className="p-2 rounded-lg transition duration-300 ease-in-out transform text-xs hover:bg-gray-200 hover:underline hover:cursor-pointer"
                         onClick={() => handleSelectDocument(doc.title)}
                       >
                         <div className="flex justify-center">

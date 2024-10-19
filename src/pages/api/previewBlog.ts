@@ -19,6 +19,9 @@ export default async function handler(
 
   if (req.method === "GET") {
     try {
+      // Set caching header for 1 week
+      res.setHeader('Cache-Control', 'public, max-age=604800');
+
       const allDocuments = await Document.find({}, 'title date type access');
 
       // Filter documents with access === 1

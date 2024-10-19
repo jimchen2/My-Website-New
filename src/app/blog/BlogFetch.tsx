@@ -1,8 +1,8 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import BlogContent from "./BlogContent";
-import MobileBlogContent from "./MobileBlogContent";
+import BlogContent from "./desktop/BlogContent";
+import MobileBlogContent from "./mobile/MobileBlogContent";
 
 interface Post {
   _id: string;

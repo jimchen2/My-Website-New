@@ -5,7 +5,7 @@ import BlogPreview from "./BlogPreview";
 import { useSearchParams, useRouter } from "next/navigation";
 
 const BlogManager: React.FC = () => {
-  const [mobile, setMobile] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
   const router = useRouter();
   const params = useSearchParams();
   const urlTitle = params.get("title");
@@ -14,13 +14,11 @@ const BlogManager: React.FC = () => {
 
   useEffect(() => {
     const handleResize = () => {
-      setMobile(window.innerWidth < 800);
+      setIsMobile(window.innerWidth < 800);
     };
     window.addEventListener("resize", handleResize);
     handleResize();
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
+    return () => window.removeEventListener("resize", handleResize);
   }, []);
 
   useEffect(() => {
@@ -35,28 +33,28 @@ const BlogManager: React.FC = () => {
   };
 
   return (
-    <div className="flex min-h-screen">
-      {mobile ? (
-        <div>
-          <BlogFetch mobile={mobile} title={selectedBlogTitle} />
+    <div className="flex min-h-screen bg-gray-100">
+      {isMobile ? (
+        <div className="w-full">
+          <BlogFetch mobile={isMobile} title={selectedBlogTitle} />
           <BlogPreview
-            mobile={mobile}
+            mobile={isMobile}
             newlines={4}
             onSelectBlogId={handleSelectBlogId}
           />
         </div>
       ) : (
-        <div className="flex">
-          <div className="w-[320px] sticky top-0 h-screen overflow-y-auto">
+        <div className="flex w-full">
+          <div className="w-80 fixed left-0 top-0 h-screen overflow-y-auto bg-white shadow-md">
             <BlogPreview
-              mobile={mobile}
+              mobile={isMobile}
               newlines={2}
               fontSize="text-lg"
               onSelectBlogId={handleSelectBlogId}
             />
           </div>
-          <div>
-            <BlogFetch mobile={mobile} title={selectedBlogTitle} />
+          <div className="ml-80 flex-grow p-6">
+            <BlogFetch mobile={isMobile} title={selectedBlogTitle} />
           </div>
         </div>
       )}
