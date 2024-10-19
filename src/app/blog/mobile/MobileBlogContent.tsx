@@ -93,18 +93,20 @@ const BlogContent: React.FC<BlogContentProps> = ({ title, type, date, body }) =>
   return (
     <div className="blog-content-container overflow-hidden">
       <div className="flex flex-col lg:flex-row">
-        <br />
-        <br />
-        <div className="lg:w-1/4 lg:pl-8 lg:sticky lg:top-20">
-          <TableOfContents headings={headings} />
+        <div className="block lg:hidden">
+        <br/>
+        <button className="bg-gray-200 p-2 rounded-md">Table of Contents</button>
+          <div className="w-full">
+            <TableOfContents headings={headings} />
+          </div>
         </div>
 
-        <div className="max-w-3xl mx-auto p-4 flex-grow">
-          <h1 className="text-3xl font-bold mb-4">{title}</h1>
+        <div className="max-w-full mx-auto p-2 md:p-4 flex-grow">
+          <h1 className="text-xl md:text-3xl font-bold mb-4">{title}</h1>
           <div className="mt-4">
-            <p className="text-sm text-gray-500 mb-4">{new Date(date).toLocaleDateString()}</p>
+            <p className="text-xs md:text-sm text-gray-500 mb-4">{new Date(date).toLocaleDateString()}</p>
           </div>
-          <div className="font-opensans scopedStyles prose lg:prose-xl break-words">
+          <div className="font-opensans scopedStyles prose md:prose-xl break-words">
             <div ref={contentRef} className="break-words" />
           </div>
           <br />
