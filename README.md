@@ -16,3 +16,4 @@ docker push jimchen2/my-website
 - [ ] Change title to from `?title=...` to `/type/title`
 - [ ] Implement in-memory caching for Preview Page for all blogs
 - [ ] Build a better search function
+- [ ] Support multi hierarchy
