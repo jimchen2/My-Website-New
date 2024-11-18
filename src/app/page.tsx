@@ -1,15 +1,15 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, Suspense } from "react";
 import BlogFetch from "../blog/BlogFetch";
 import BlogPreview from "../blog/BlogPreview";
 import { useSearchParams, useRouter } from "next/navigation";
 
-const BlogManager: React.FC = () => {
+// Create a separate component for the search params logic
+const BlogContent = () => {
   const [isMobile, setIsMobile] = useState(false);
   const router = useRouter();
   const params = useSearchParams();
   const urlTitle = params.get("title");
-
   const [selectedBlogTitle, setSelectedBlogTitle] = useState(urlTitle || "My New Website");
 
   useEffect(() => {
@@ -59,6 +59,20 @@ const BlogManager: React.FC = () => {
         </div>
       )}
     </div>
+  );
+};
+
+// Create a fallback component
+const BlogContentFallback = () => {
+  return <div>Loading...</div>;
+};
+
+// Main BlogManager component with Suspense
+const BlogManager: React.FC = () => {
+  return (
+    <Suspense fallback={<BlogContentFallback />}>
+      <BlogContent />
+    </Suspense>
   );
 };
 
