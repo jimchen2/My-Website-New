@@ -19,6 +19,8 @@ docker push jimchen2/my-website
 - [ ] Support multi hierarchy
 - [ ] Add Online Profiles
 - [ ] Fix Docker Error
+- [ ] Put Search Bar on the left
+- [ ] Fix the TOC offset
 
 
 
