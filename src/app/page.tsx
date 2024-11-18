@@ -1,7 +1,7 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import BlogFetch from "./blog/BlogFetch";
-import BlogPreview from "./BlogPreview";
+import BlogFetch from "../blog/BlogFetch";
+import BlogPreview from "../blog/BlogPreview";
 import { useSearchParams, useRouter } from "next/navigation";
 
 const BlogManager: React.FC = () => {

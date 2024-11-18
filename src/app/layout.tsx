@@ -1,5 +1,5 @@
 import React from "react";
-import Navbar from "./navbar/navbar";
+import Navbar from "../navbar/navbar";
 import "./globals.css";
 import { inter, roboto, openSans, lato, montserrat, poppins, nunito, raleway } from './fonts'
 

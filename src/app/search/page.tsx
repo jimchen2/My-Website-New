@@ -2,7 +2,7 @@
 
 import { useParams } from "next/navigation";
 import React, { useEffect, useState } from "react";
-import PreviewCard from "../../../search/PreviewCard";
+import PreviewCard from "../../search/PreviewCard";
 
 interface DocumentSnippet {
   title: string;
@@ -15,13 +15,12 @@ interface DocumentSnippet {
 
 const BlogPreview = () => {
   const params = useParams();
-  const query = params?.id as string;
 
   const [documentSnippets, setDocumentSnippets] = useState<DocumentSnippet[]>([]);
 
   useEffect(() => {
     const fetchDocumentSnippets = async () => {
-      const res = await fetch(`/api/searchBlog${query ? `?query=${query}` : ""}`);
+      const res = await fetch(`/api/searchBlog`);
       if (!res.ok) {
         throw new Error(`HTTP error! status: ${res.status}`);
       }
@@ -30,7 +29,7 @@ const BlogPreview = () => {
     };
 
     fetchDocumentSnippets();
-  }, [query]);
+  });
 
   return (
     <div className="container mx-auto px-4 py-8">
@@ -40,7 +39,7 @@ const BlogPreview = () => {
       <br />
       <ul className="space-y-4">
         {documentSnippets.map((doc, index) => (
-          <PreviewCard key={index} document={doc} highlightPattern={query} />
+          <PreviewCard key={index} document={doc} />
         ))}
       </ul>
     </div>

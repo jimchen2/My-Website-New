@@ -15,7 +15,7 @@ function getRelevantSnippet(body: string, searchTerm: string, isTitleMatch: bool
 }
 
 function formatDateToYYYYMMDD(date: Date): string {
-  return date.toISOString().slice(0, 10).replace(/-/g, '');
+  return date.toISOString().slice(0, 10).replace(/-/g, "");
 }
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
@@ -27,7 +27,20 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     try {
       let documents = [];
 
-      if (query && typeof query === "string") {
+      if (!query) {
+        // If query is null or undefined, return all documents
+        documents = await Document.find({ access: 1 }).select("title date type body").sort({ date: -1 }).lean().exec();
+
+        documents = documents.map((doc) => ({
+          title: doc.title,
+          date: doc.date.toISOString(),
+          dateString: formatDateToYYYYMMDD(doc.date),
+          type: doc.type,
+          body: doc.body.substring(0, 300), // Return first 300 characters
+          isTitleMatch: false,
+          isBodyMatch: false,
+        }));
+      } else if (typeof query === "string") {
         const regex = new RegExp(query, "i");
 
         // Create a base query object
@@ -39,7 +52,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         // Check if the query is a valid date in YYYYMMDD format
         if (/^\d{8}$/.test(query)) {
           const year = parseInt(query.slice(0, 4));
-          const month = parseInt(query.slice(4, 6)) - 1; // Months are 0-indexed in JavaScript
+          const month = parseInt(query.slice(4, 6)) - 1;
           const day = parseInt(query.slice(6, 8));
           const startDate = new Date(Date.UTC(year, month, day));
           const endDate = new Date(Date.UTC(year, month, day + 1));
@@ -47,17 +60,12 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
           baseQuery.$or.push({
             date: {
               $gte: startDate,
-              $lt: endDate
-            }
+              $lt: endDate,
+            },
           });
         }
 
-        // Use lean() for faster query execution
-        documents = await Document.find(baseQuery)
-          .select('title date type body')
-          .sort({ date: -1 })
-          .lean()
-          .exec();
+        documents = await Document.find(baseQuery).select("title date type body").sort({ date: -1 }).lean().exec();
 
         documents = documents.map((doc) => {
           const isTitleMatch = regex.test(doc.title);
@@ -65,8 +73,8 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
           return {
             title: doc.title,
-            date: doc.date.toISOString(), // Convert date to ISO string
-            dateString: formatDateToYYYYMMDD(doc.date), // Add YYYYMMDD format
+            date: doc.date.toISOString(),
+            dateString: formatDateToYYYYMMDD(doc.date),
             type: doc.type,
             body: snippet,
             isTitleMatch,
