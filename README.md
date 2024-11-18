@@ -18,6 +18,7 @@ docker push jimchen2/my-website
 - [ ] Build a better search function
 - [ ] Support multi hierarchy
 - [ ] Add Online Profiles
+- [ ] Fix Docker Error
 
 
 
