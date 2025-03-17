@@ -1,5 +1,5 @@
 {
-  "name": "next",
+  "name": "my-next-bootstrap-app",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -9,45 +9,13 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@eslint/config-array": "^0.17.1",
-    "@eslint/object-schema": "^2.1.4",
-    "@headlessui/react": "^2.2.0",
-    "@heroicons/react": "^1.0.6",
-    "@jridgewell/sourcemap-codec": "^1.5.0",
-    "@mdx-js/loader": "^3.1.0",
-    "@mdx-js/react": "^3.1.0",
-    "@next/mdx": "^14.2.18",
-    "@rollup/plugin-terser": "^0.4.4",
-    "autoprefixer": "^10.4.20",
-    "better-react-mathjax": "^2.0.3",
-    "cross-env": "^7.0.3",
-    "dompurify": "^3.2.0",
-    "dotenv": "^16.4.5",
-    "feed": "^4.2.2",
-    "framer-motion": "^11.11.17",
-    "glob": "^10.4.5",
-    "katex": "^0.16.11",
-    "marked": "^13.0.3",
-    "moment-timezone": "^0.5.46",
-    "mongoose": "^8.8.1",
-    "next": "^14.2.18",
-    "next-mdx-remote": "^5.0.0",
-    "next-pwa": "^5.6.0",
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1",
-    "react-icons": "^5.3.0",
-    "react-markdown": "^9.0.1",
-    "rimraf": "^5.0.10",
-    "uuid": "^10.0.0"
-  },
-  "devDependencies": {
-    "@types/node": "^20.17.6",
-    "@types/react": "^18.3.12",
-    "@types/react-dom": "^18.3.1",
-    "eslint": "^8.57.1",
-    "eslint-config-next": "14.2.3",
-    "postcss": "^8.4.49",
-    "tailwindcss": "^3.4.15",
-    "typescript": "^5.6.3"
+    "bootstrap": "^5.3.3",
+    "moment-timezone": "^0.5.47",
+    "mongoose": "^8.12.1",
+    "next": "15.2.2",
+    "react": "^19.0.0",
+    "react-bootstrap": "^2.10.9",
+    "react-dom": "^19.0.0",
+    "rss": "^1.2.2"
   }
 }
